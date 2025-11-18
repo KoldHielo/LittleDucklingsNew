@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}Contract for {{ child.first_name }} {{ child.last_name }}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/child_forms/styles.css" />
+{% endblock %}
+
+{% block header %}
+<h1>Contract</h1>
+{% endblock %}
+
+{% block main %}
+  <section>
+    <h3>Childminder Details</h3>
+    <p><strong>Name:</strong> Laura Oldfield</p>
+    <p><strong>Address:</strong> 2 The Greenways, Edge View Road, Baddeley Green, Stoke-on-Trent, ST2 7HT</p>
+    <p><strong>Telephone:</strong> 07547635016</p>
+    <p><strong>Ofsted Registration Number:</strong> 2578224</p>
+  </section>
+
+  <section>
+    <h3>Terms & Conditions</h3>
+    <p>This agreement sets out the terms of childcare provided by {{ trading_name }}. Please
+       read carefully before signing. By completing this form, you agree to the terms outlined below.</p>
+
+    <h4>Fees</h4>
+    <p>Day Fee: £{{ price_gbp }}. This fee covers childcare from 8am–6pm (Tuesday to Thursday). This is a set rate
+       regardless of whether your child attends for fewer hours.</p>
+
+    <h4>Early Arrivals & Late Collections</h4>
+    <p>£1.50 per 15 minutes applies for early arrivals or late collections beyond contracted hours.</p>
+
+    <h4>Holidays & Illness</h4>
+    <ul>
+      <li>Parents’ holidays or absences are chargeable at the normal daily fee.</li>
+      <li>Childminder’s holidays are not chargeable.</li>
+      <li>If a child is ill, normal fees apply. If the childminder is ill, no fee is charged.</li>
+    </ul>
+
+    <h4>Bank Holidays & Training Days</h4>
+    <p>Closed on bank holidays. No fee is charged if closed for training days.</p>
+
+    <h4>Payments</h4>
+    <p>Fees are payable 4-weekly in advance via bank transfer (BACS) or cash. Late payments incur a £5
+       per day charge. Contracts may be terminated immediately if payments are overdue.</p>
+
+    <h4>Contract Termination</h4>
+    <p>Four weeks’ notice in writing is required by either party. Fees remain payable during the notice
+       period.</p>
+
+    <h4>Settling In</h4>
+    <p>A settling-in period can be arranged and terminated by either party without prejudice. Sessions
+       must still be paid for at the normal daily rate.</p>
+
+    <p>By signing, parents/carers confirm they understand and agree to the above terms.</p>
+  </section>
+
+   <!-- Contract Form -->
+  <form action="{% url 'save_contract' child.pk %}" method="post">
+    {% csrf_token %}
+
+    <fieldset>
+      <legend>Child Information</legend>
+      <p><strong>Child Name:</strong> {{ child.first_name }} {{ child.last_name }}</p>
+      <p><strong>Date of Birth:</strong> {{ child.dob }}</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Contract Details</legend>
+      <p><strong>Start Date</strong> {{ child.get_contracted_start_date_display }}</p>
+      <p><strong>Contracted Days:</strong> {{ child.get_contracted_days_display }}</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Parental Responsibility</legend>
+      <label>Parent 1 Full Name</label>
+      <input type="text" name="parent1_name" autocomplete="section-parent1 name" required>
+
+      <label>Parent 1 Address</label>
+      <textarea name="parent1_address" autocomplete="section-parent1 home street-address" required></textarea>
+
+      <label>Parent 1 Telephone (Home)</label>
+      <input type="text" name="parent1_telephone_home" autocomplete="section-parent1 home tel">
+      <label>Parent 1 Telephone (Work)</label>
+      <input type="text" name="parent1_telephone_work" autocomplete="section-parent1 work tel">
+      <label>Parent 1 Telephone (Mobile)</label>
+      <input type="text" name="parent1_telephone_mobile" autocomplete="section-parent1 mobile tel">
+
+      <hr>
+
+      <label>Parent 2 Full Name (Optional)</label>
+      <input type="text" name="parent2_name" autocomplete="section-parent2 name">
+
+      <label>Parent 2 Address</label>
+      <textarea name="parent2_address" autocomplete="section-parent2 home street-address"></textarea>
+
+      <label>Parent 2 Telephone (Home)</label>
+      <input type="text" name="parent2_telephone_home" autocomplete="section-parent2 home tel">
+      <label>Parent 2 Telephone (Work)</label>
+      <input type="text" name="parent2_telephone_work" autocomplete="section-parent2 work tel">
+      <label>Parent 2 Telephone (Mobile)</label>
+      <input type="text" name="parent2_telephone_mobile" autocomplete="section-parent2 mobile tel">
+    </fieldset>
+
+    <fieldset>
+      <legend>Legal Contact (Optional)</legend>
+      <textarea name="legal_contact" placeholder="Enter if different from parents, otherwise N/A" autocomplete="off"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>Authorised Collectors</legend>
+      <p>List names, addresses, and contact numbers of authorised collectors.</p>
+      <textarea name="authorised_collectors" autocomplete="off" required></textarea>
+
+      <label>Password for Collection</label>
+      <input type="text" name="collection_password" autocomplete="off" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Agreement</legend>
+      <p>
+        I confirm that I have read, understood, and agree to abide by the terms of this
+        Childminding Contract and associated policies.
+      </p>
+      <label>Parent Signature (Full Name)</label>
+      <input type="text" name="parent_signature" autocomplete="off" required>
+    </fieldset>
+
+    <button type="submit">Submit Contract</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Child Record Form</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #333; line-height: 1.5; padding: 20px;">
+
+<header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="margin: 0; font-size: 24px;">Child Record Form</h1>
+    <p style="margin: 5px 0;">Childminder: Laura Oldfield</p>
+    <p style="margin: 5px 0;">Address: 2 The Greenways, Edge View Road, Baddeley Green, Stoke-on-Trent, ST2 7HT</p>
+    <p style="margin: 5px 0;">Telephone: 07547635016</p>
+    <p style="margin: 5px 0;">Ofsted Registration Number: 2578224</p>
+</header>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Child Details</h2>
+    <p><strong>Name:</strong> {{ record.child.first_name }} {{ record.child.last_name }}</p>
+    <p><strong>Date of Birth:</strong> {{ record.child.dob|date:"d/m/Y" }}</p>
+    <p><strong>Home Address:</strong> {{ record.home_address }}</p>
+    <p><strong>Languages Spoken:</strong> {{ record.languages_spoken }}</p>
+    {% if record.religion_cultural_needs %}
+    <p><strong>Religion / Cultural Needs:</strong> {{ record.religion_cultural_needs }}</p>
+    {% endif %}
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Doctor & Health</h2>
+    <p><strong>Doctor’s Name:</strong> {{ record.doctor_name }}</p>
+    <p><strong>Surgery:</strong> {{ record.doctor_surgery }}</p>
+    <p><strong>Phone:</strong> {{ record.doctor_phone }}</p>
+
+    {% if record.medical_conditions %}
+    <p><strong>Medical Conditions:</strong> {{ record.medical_conditions }}</p>
+    {% endif %}
+    {% if record.allergies %}
+    <p><strong>Allergies:</strong> {{ record.allergies }}</p>
+    {% endif %}
+    {% if record.dietary_needs %}
+    <p><strong>Dietary Needs:</strong> {{ record.dietary_needs }}</p>
+    {% endif %}
+    {% if record.medication %}
+    <p><strong>Medication:</strong> {{ record.medication }}</p>
+    {% endif %}
+    {% if record.vaccinations %}
+    <p><strong>Vaccinations:</strong> {{ record.vaccinations }}</p>
+    {% endif %}
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Emergency Contacts</h2>
+    <h3>Contact 1</h3>
+    <p><strong>Name:</strong> {{ record.emergency_contact1_name }}</p>
+    <p><strong>Relationship:</strong> {{ record.emergency_contact1_relationship }}</p>
+    <p><strong>Phone:</strong> {{ record.emergency_contact1_phone }}</p>
+
+    {% if record.emergency_contact2_name %}
+    <h3>Contact 2</h3>
+    <p><strong>Name:</strong> {{ record.emergency_contact2_name }}</p>
+    <p><strong>Relationship:</strong> {{ record.emergency_contact2_relationship }}</p>
+    <p><strong>Phone:</strong> {{ record.emergency_contact2_phone }}</p>
+    {% endif %}
+</section>
+
+{% if record.additional_notes %}
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Additional Notes</h2>
+    <p>{{ record.additional_notes }}</p>
+</section>
+{% endif %}
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Agreement</h2>
+    <p>I confirm the above information is accurate and I will notify {{ trading_name }} of any changes.</p>
+    <p><strong>Parent/Guardian Signature:</strong> {{ record.parent_signature }}</p>
+    <p><strong>Date/Time:</strong> {{ record.parent_signed_at|date:"d/m/Y H:i" }}</p>
+    <p><strong>Parent IP:</strong> {{ record.parent_ip }}</p>
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Childminder Acknowledgment</h2>
+    <p><strong>Childminder Signature:</strong> {{ record.childminder_signature }}</p>
+    <p><strong>Date/Time:</strong> {{ record.childminder_signed_at|date:"d/m/Y H:i" }}</p>
+</section>
+
+</body>
+</html>

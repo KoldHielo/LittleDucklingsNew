@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Password Change{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/login/styles.css" />
+<script src="/static/base/sanitisers.js"></script>
+<style>
+    form button {
+        font-size: 15px;
+    }
+
+    form {
+        margin-bottom: 50px;
+    }
+
+    small {
+        display: block;
+        margin-top: 4px;
+        color: #555;
+        width: 70%;
+    }
+</style>
+{% endblock %}
+
+{% block header %}
+<h1>Password Change</h1>
+
+<form action="{% url 'password_verify' uid token %}" method="post">
+    {% csrf_token %}
+    <div>
+        <label for="email">Email:</label>
+        <input id="email" type="email" autocomplete="email" name="email" value="{{ user_email }}" required />
+        <input type="hidden" name="a" />
+        <input type="hidden" name="b" />
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password" autocomplete="new-password" required />
+        <small>Password must be at least 8 characters long, include <strong>one capital letter</strong>, <strong>one number</strong>, and <strong>one special character</strong> (e.g. <code>@$!%*#^</code>).</small>
+    </div>
+
+    <div>
+        <label for="confirm_password">Confirm Password:</label>
+        <input id="confirm_password" type="password" name="confirm_password" autocomplete="new-password" required />
+    </div>
+    <button type="submit">Change Password</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/forgot_password/change/script.js"></script>
+{% endblock %}

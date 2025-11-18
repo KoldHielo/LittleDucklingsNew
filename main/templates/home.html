@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+{{ block.super }}
+<link rel="stylesheet" href="/static/home/styles.css" />
+{% endblock %}
+
+{% block header %}
+<div id="main-intro">
+    <img id="header-logo" src="/static/base/images/logo.svg" alt="{{trading_name}} Logo" />
+</div>
+{% endblock %}
+
+{% block main %}
+<section id="about-me" class="split-in-half">
+    <div>
+        <div id="intro-h2-container">
+            <img class="intro-rainbow" src="/static/home/images/rainbow.png" alt="Rainbow Icon" />
+            <h2>About Me</h2>
+            <img class="intro-rainbow" src="/static/home/images/rainbow.png" alt="Rainbow Icon" />
+        </div>
+        <div id="about-me-imgs">
+            <img id="laura-ofsted" src="/static/home/images/laura_ofsted.png" alt="Image of Childminder Laura Oldfield, Ofsted Rating - Good" />
+        </div>
+    </div>
+    <div>
+        <p>Hello, I’m Laura and I’m the proud owner of Little Ducklings Childminding which is based in <a class="highlight" style="color: #fff;" href="https://www.google.com/maps?q=Baddeley+Green,+Stoke-on-Trent" target="_blank">Baddeley Green, Stoke-on-Trent</a>. I am married to my husband Kieran and we have 2 children together. A little girl and a little boy. I offer a cosy home to home environment as I believe this is the most comforting for children and helps them feel most at ease when transitioning into an early years setting.</p>
+        <p>Whilst having lots of fun through play I will carefully plan and set up activities for the children to participate in which will help their learning and development. Their interests and needs will always be at the focus of attention.</p>
+        <p>We will have lots of free flow play opportunities and I will implement the Early Years Foundation Stage curriculum to help your child to meet their developmental milestones during their time with me. I aspire to help each child to become happy, confident and to have fun through play. I like to work alongside families and help them in anyway possible.</p>
+        <p>Thank you for considering Little Ducklings. I would love to welcome you and your little one. If you would like to arrange a visit please complete the enquiry form or contact me on <a class="highlight" style="color: #fff;" href="tel:+447547635016">07547635016</a></p>
+    </div>
+
+</section>
+
+<div class="split-in-half">
+    <section id="life-at-ld">
+        <h2>Life At Little Ducklings</h2>
+        <img id="happy-duck" src="/static/home/images/duck_family_nobg.png" alt="Duck Family Image" />
+        <ul>
+            <li>Weekly and monthly themes</li>
+            <li>Lots of outdoor play</li>
+            <li>Messy play and sensory based learning</li>
+            <li>Days out and activities in the area included</li>
+            <li>Healthy snacks and drinks</li>
+            <li>Nutritious home cooked meals</li>
+            <li>Flexible routines to support children</li>
+        </ul>
+        
+        <p>Whether we're painting, singing, exploring outside, or enjoying a quiet moment with a story, every child is encouraged to feel confident, happy, and loved at Little Ducklings.</p>
+    </section>
+
+    <section id="certs">
+        <h2>My Experience</h2>
+
+        <div id="cert-container">
+            <div class="cert">
+                <img src="/static/home/images/bahons_ecs.png" alt="BA Hons Education Icon" />
+                <h3>BA Hons Early Childhood Studies</h3>
+            </div>
+            <div class="cert">
+                <img src="/static/home/images/children.png" alt="Children Icon" />
+                <h3>Newborn to 10 Year Olds</h3>
+            </div>
+            <div class="cert">
+                <img src="/static/home/images/first_aid_nobg.png" alt="First Aid Icon" />
+                <h3>Paediatric First Aid Trained</h3>
+            </div>
+            <div class="cert">
+                <img src="/static/home/images/safeguarding_nobg.png" alt="Safeguarding Icon" />
+                <h3>Designated Safeguarding Lead</h3>
+            </div>
+            <div class="cert">
+                <img src="/static/home/images/certificate_nobg.png" alt="Certificate Icon" />
+                <h3>Level 1 Safeguarding</h3>
+            </div>
+            <div class="cert">
+                <img src="/static/home/images/prevent.png" alt="Prevent Icon" />
+                <h3>Prevent Duty</h3>
+            </div>
+            <div class="cert">
+                <img src="/static/home/images/fah.png" alt="Dinner Plate with Cuttelry Icon" />
+                <h3>Level 2 Food Hygiene</h3>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!--<div id="pricing-availability-split" class="split-in-half">-->
+    <section id="pricing">
+        <h2>Pricing</h2>
+        <div>
+            <div id="price-box" style="padding-top: 20px;">
+                <p><strong>£{{ price_gbp }}</strong></p>
+                <p>per day</p>
+            </div>
+        </div>
+        <div id="pricing-gov-funding">
+            <p>Government funding may be available to help cover the cost of childcare. You may also be able to claim tax free childcare. To check eligibility please <a class="highlight" href="https://www.childcarechoices.gov.uk/15-and-30-hours-childcare-support" target="_blank">click here</a>.</p>
+        </div>
+
+    </section>
+
+    <!--<section id="availability">
+        <h2>Availability</h2>
+
+        <div class="weekday-availability">
+            <div class="day">
+                <span class="status unavailable"></span>
+                <span class="name">Sunday</span>
+                <span class="hours">Closed</span>
+            </div>
+            <div class="day">
+                <span class="status unavailable"></span>
+                <span class="name">Monday</span>
+                <span class="hours">Closed</span>
+            </div>
+            <div class="day">
+                <span class="status available"></span>
+                <span class="name">Tuesday</span>
+                <span class="hours">08:00 – 18:00</span>
+            </div>
+            <div class="day">
+                <span class="status available"></span>
+                <span class="name">Wednesday</span>
+                <span class="hours">08:00 – 18:00</span>
+            </div>
+            <div class="day">
+                <span class="status available"></span>
+                <span class="name">Thursday</span>
+                <span class="hours">08:00 – 18:00</span>
+            </div>
+            <div class="day">
+                <span class="status unavailable"></span>
+                <span class="name">Friday</span>
+                <span class="hours">Closed</span>
+            </div>
+            <div class="day">
+                <span class="status unavailable"></span>
+                <span class="name">Saturday</span>
+                <span class="hours">Closed</span>
+            </div>
+        </div>
+
+    </section>
+</div>-->
+
+<section id="contact">
+        <h2>Get in Touch</h2>
+        <div id="contact-split" class="split-in-half">
+            <img id="duck-mail" src="/static/home/images/duck_mail.png" alt="Little Duckling Carrying Mail" />
+
+            <form action="{% url 'home' %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <label for="name">Your Name</label>
+                    <input id="name" type="text" name="name" />
+                </div>
+                <div>
+                    <label for="email">Your Email</label>
+                    <input id="email" type="email" name="email" />
+                </div>
+                <div>
+                    <label for="tel">Your Telephone</label>
+                    <input id="tel" type="tel" name="tel" />
+                </div>
+                <div>
+                    <label for="msg">Your Message</label>
+                    <textarea id="msg" name="msg"></textarea>
+                </div>
+                <input type="hidden" name="message" />
+                <input type="hidden" name="mensaje" />
+                <input type="hidden" name="letter" />
+                <input type="hidden" name="phone" />
+                <input type="hidden" name="mobile" />
+                <input type="hidden" name="telephone" />
+                <input type="hidden" name="telefono" />
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/home/script.js"></script>
+{% if message_success %}
+<script>
+    alert('{{trading_name}} has successfully received your message, please rest assured that we will be in touch with you very shortly!');
+</script>
+{% endif %}
+{% endblock %}

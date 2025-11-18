@@ -1,0 +1,33 @@
+header {
+    margin-top: var(--nav-height);
+}
+
+#forms {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    list-style: none;
+    font-size: 25px;
+    color: var(--secondary-colour);
+}
+
+#forms li {
+    padding: 6px 0;
+}
+
+#forms li a:hover {
+    color: #e48f40;
+    text-decoration: underline;
+}
+
+hr {
+    border: 3px solid var(--secondary-colour);
+}
+
+hr:not(:first-of-type) {
+    margin: 40px 0;
+}
+
+.complete {
+    color: #41c448;
+}

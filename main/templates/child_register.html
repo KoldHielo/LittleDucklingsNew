@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Child Register{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/child_register/styles.css" />
+{% endblock %}
+
+{% block header %}
+<h1>Child Register</h1>
+{% endblock %}
+
+{% block main %}
+<ul id="children">
+    {% for c in children %}
+    <li>
+        <h4>{{ c.first_name }} {{ c.last_name }}</h4>
+        <form action="{% url 'clock_in' c.pk %}" method="post">
+            {% csrf_token %}
+            <button class="clock-in-button" type="submit">Clock In</button>
+        </form>
+        <form action="{% url 'clock_out' c.pk %}" method="post">
+            {% csrf_token %}
+            <button class="clock-out-button" type="submit">Clock Out</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

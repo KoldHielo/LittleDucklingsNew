@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Gallery{% endblock %}
+
+{% block head %}
+<meta name="description" content="Come and look at some images of us in action at {{ trading_name }}!" />
+<meta property="og:title" content="{{ trading_name }} - Gallery" />
+<meta property="og:description" content="Come and look at some images of us in action at {{ trading_name }}!" />
+<meta property="og:image" content="{{ full_url }}/static/base/images/logo.png" />
+<meta property="og:url" content="{{ full_url }}" />
+<meta property="og:type" content="website" />
+<meta property="og:logo" content="{{ full_url }}/static/base/images/logo.png" />
+<meta name="twitter:title" content="{{ trading_name }} - Gallery" />
+<meta name="twitter:description" content="Come and look at some images of us in action at {{ trading_name }}!" />
+<meta name="twitter:image" content="{{ full_url }}/static/base/images/logo.png" />
+
+<link rel="stylesheet" href="/static/gallery/styles.css" />
+{% endblock %}
+
+{% block main %}
+<h1>Our Gallery</h1>
+
+<section id="photos">
+    <img src="/static/gallery/images/cm1.jpeg" alt="Playing in the colouring and crafts box" />
+    <img src="/static/gallery/images/cm2.jpeg" alt="Playing with the play-dough" />
+    <img src="/static/gallery/images/cm3.jpeg" alt="Playing on the swing" />
+    <img src="/static/gallery/images/cm4.jpeg" alt="Painting messy pictures" />
+    <img src="/static/gallery/images/cm5.jpeg" alt="Making sparkly magic potions" />
+    <img src="/static/gallery/images/cm6.jpeg" alt="Making sparkly magic potions outside" />
+    <img src="/static/gallery/images/cm7.jpeg" alt="Making sparkly magic potions outside" />
+</section>
+{% endblock %}

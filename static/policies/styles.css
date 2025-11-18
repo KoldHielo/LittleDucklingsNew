@@ -1,0 +1,41 @@
+header {
+    margin-top: var(--nav-height);
+    padding: 0 10px;
+}
+
+header h1 {
+    max-width: 500px;
+}
+
+#policies {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 600px;
+}
+
+#policies h2 {
+    text-align: left;
+}
+
+#policies h3 {
+    color: var(--home1);
+    margin: 10px 0 10px 0;
+}
+
+#policies h4 {
+    color: var(--secondary-colour);
+    margin: 5px 0 7px 0;
+}
+
+#policies p {
+    padding: 7px 0;
+}
+
+#policies ul {
+    padding: 0 20px;
+    color: #419748;
+}
+
+#policies ul li {
+    padding: 3px 4px;
+}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Child Record for {{ child.first_name }} {{ child.last_name }}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/child_forms/styles.css" />
+{% endblock %}
+
+{% block header %}
+<h1>Child Record Form</h1>
+{% endblock %}
+
+{% block main %}
+<form action="{% url 'save_child_record' child.pk %}" method="post">
+  {% csrf_token %}
+
+  <fieldset>
+    <legend>Child Details</legend>
+    <p><strong>Child Name:</strong> {{ child.first_name }} {{ child.last_name }}</p>
+    <p><strong>Date of Birth:</strong> {{ child.dob|date:"d/m/Y" }}</p>
+
+    <label>Home Address</label>
+    <textarea name="home_address" autocomplete="section-child home street-address" required></textarea>
+
+    <label>Languages Spoken at Home</label>
+    <input type="text" name="languages_spoken" required>
+
+    <label>Religion / Cultural Needs (Optional)</label>
+    <input type="text" name="religion_cultural_needs">
+  </fieldset>
+
+  <fieldset>
+    <legend>Doctor & Health Details</legend>
+    <label>Doctor's Name</label>
+    <input type="text" name="doctor_name" required>
+
+    <label>Doctor's Surgery</label>
+    <input type="text" name="doctor_surgery" required>
+
+    <label>Doctor's Phone</label>
+    <input type="text" name="doctor_phone" autocomplete="tel" required>
+
+    <label>Medical Conditions</label>
+    <textarea name="medical_conditions"></textarea>
+
+    <label>Allergies</label>
+    <textarea name="allergies"></textarea>
+
+    <label>Dietary Needs</label>
+    <textarea name="dietary_needs"></textarea>
+
+    <label>Medication</label>
+    <textarea name="medication"></textarea>
+
+    <label>Vaccinations (Optional)</label>
+    <textarea name="vaccinations"></textarea>
+  </fieldset>
+
+  <fieldset>
+    <legend>Emergency Contacts</legend>
+    <p>Please provide at least one contact other than parents/guardians.</p>
+
+    <h4>Contact 1</h4>
+    <label>Name</label>
+    <input type="text" name="emergency_contact1_name" required>
+    <label>Relationship</label>
+    <input type="text" name="emergency_contact1_relationship" required>
+    <label>Phone</label>
+    <input type="text" name="emergency_contact1_phone" autocomplete="tel" required>
+
+    <hr>
+
+    <h4>Contact 2 (Optional)</h4>
+    <label>Name</label>
+    <input type="text" name="emergency_contact2_name">
+    <label>Relationship</label>
+    <input type="text" name="emergency_contact2_relationship">
+    <label>Phone</label>
+    <input type="text" name="emergency_contact2_phone" autocomplete="tel">
+  </fieldset>
+
+  <fieldset>
+    <legend>Additional Notes</legend>
+    <textarea name="additional_notes" placeholder="E.g. sleep routines, comfort items, likes/dislikes"></textarea>
+  </fieldset>
+
+  <fieldset>
+    <legend>Agreement</legend>
+    <p>
+      I confirm the above information is accurate and I will notify {{ trading_name }} of any changes.
+    </p>
+    <label>Parent/Guardian Signature (Full Name)</label>
+    <input type="text" name="parent_signature" autocomplete="off" required>
+  </fieldset>
+
+  <button type="submit">Submit Child Record</button>
+</form>
+{% endblock %}

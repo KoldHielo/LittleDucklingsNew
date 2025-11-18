@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}Consent Forms for {{ child.first_name }} {{ child.last_name }}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/child_forms/styles.css" />
+{% endblock %}
+
+{% block header %}
+<h1>Consent Forms</h1>
+{% endblock %}
+
+{% block main %}
+  <section>
+    <h3>Child Information</h3>
+    <p><strong>Name of Child:</strong> {{ child.first_name }} {{ child.last_name }}</p>
+  </section>
+
+  <form action="{% url 'save_consent' child.pk %}" method="post">
+    {% csrf_token %}
+
+    <fieldset>
+      <legend>Policies & Procedures</legend>
+      <p>I have seen the Ofsted Registration certificate for Laura Oldfield and have read and understood the policies and procedures. I agree to abide by them.</p>
+      <label>Parent/Carer Signature</label>
+      <input type="text" name="policies_signature" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Complaints Procedure</legend>
+      <p>I know the procedure for making a complaint and have been supplied with the Ofsted Complaints Line Number.</p>
+      <label>Parent/Carer Signature</label>
+      <input type="text" name="complaints_signature" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Emergency Treatment</legend>
+      <p>I give permission for my child to receive Emergency First Aid or be taken to Accident & Emergency if necessary. I also agree medication can be administered as per my child’s medication record.</p>
+      <label>Parent/Carer Signature</label>
+      <input type="text" name="emergency_signature" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Emergency Caregiver</legend>
+      <p>I am aware that in an emergency my child may be left with a suitable person other than Laura Oldfield and give permission for this.</p>
+      <label>Parent/Carer Signature</label>
+      <input type="text" name="emergency_caregiver_signature" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Outings & Visits</legend>
+      <p>I give permission for my child to go on local outings (parks, library, shops, etc.) with Laura Oldfield.</p>
+      <label>Parent/Carer Signature</label>
+      <input type="text" name="outings_signature" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Photographs</legend>
+      <p>I give permission for photographs/images of my child to be taken and used in activity diaries or for Ofsted evidence.</p>
+      <label>Parent/Carer Signature</label>
+      <input type="text" name="photos_signature" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>Transport</legend>
+        <p>I give permission for my child to travel in Laura Oldfield's vehicle. I understand appropriate safety restraints will always be used.</p>
+        <label>Parent/Carer Signature</label>
+        <input type="text" name="transport_signature" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Play Equipment</legend>
+      <p>I give permission for my child to play on large play equipment at the childminder’s or in play areas.</p>
+      <label>Parent/Carer Signature</label>
+      <input type="text" name="equipment_signature" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>First Aid</legend>
+        <p>I give permission for Laura Oldfield to administer first aid and seek emergency medical treatment if required.</p>
+        <label>Parent/Carer Signature</label>
+        <input type="text" name="firstaid_signature" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Sharing with Pre-School</legend>
+      <p>I give permission for Laura Oldfield to share observations and photos with my child’s pre-school.</p>
+      <label>Parent/Carer Signature</label>
+      <input type="text" name="sharing_signature" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Plasters</legend>
+      <p>I give permission for Laura Oldfield to apply a plaster if necessary.</p>
+      <label>Parent/Carer Signature</label>
+      <input type="text" name="plaster_signature" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Suncream & Wipes</legend>
+      <p>I give permission for Laura Oldfield to use suncream, nappy cream, and wipes if applicable.</p>
+      <label>Parent/Carer Signature</label>
+      <input type="text" name="suncream_wipes_signature" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>Calpol</legend>
+        <p>I give permission for Laura Oldfield to administer age-appropriate medicine (e.g. Calpol) in emergencies until I can collect my child.</p>
+        <label>Parent/Carer Signature</label>
+        <input type="text" name="calpol_signature" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Agreement</legend>
+      <p>
+        I confirm that I have read, understood, and agree to all the contents on the Consent Form.
+      </p>
+      <label>Parent Signature (Full Name)</label>
+      <input type="text" name="parent_signature" autocomplete="off" required>
+    </fieldset>
+
+    <button type="submit">Submit Consent Form</button>
+  </form>
+{% endblock %}

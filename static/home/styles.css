@@ -1,0 +1,360 @@
+#main-intro {
+    margin-top: var(--nav-height);
+}
+
+#header-logo {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+#about-me {
+    background-color: var(--home1);
+    color: #fff;
+}
+
+#about-me h2 {
+    color: #fff;
+}
+
+#intro-h2-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+    padding-bottom: 40px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.intro-rainbow {
+    width: 80px;
+}
+
+#about-me-imgs {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#about-me-imgs img {
+    width: 77%;
+    border-radius: 30px;
+    max-width: 250px;
+}
+
+section p, section ul {
+    padding: 15px 25px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+section p:first-of-type {
+    margin-top: 40px;
+}
+
+#life-at-ld {
+    background-color: var(--primary-colour);
+    padding: 20px 0;
+}
+
+#life-at-ld ul {
+    padding: 0 40px;
+    color: var(--home1);
+    margin: 0 auto;
+    max-width: 450px;
+}
+
+#life-at-ld ul li {
+    margin: 10px auto;
+}
+
+#life-at-ld p {
+    color: var(--home1);
+    font-size: 20px;
+    text-align: center;
+}
+
+#happy-duck {
+    width: 33%;
+    margin: 10px auto 30px auto;
+}
+
+#certs {
+    background-color: var(--home1);
+    padding: 0 50px 35px 50px;
+}
+
+#certs * {
+    color: #fff;
+}
+
+.cert {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 12.5%;
+    text-align: center;
+    border: 3px solid #fff;
+    border-radius: 30px;
+    margin: 20px auto 0 auto;
+}
+
+.cert:nth-of-type(2n) {
+    direction: rtl;
+}
+
+.cert img {
+    height: 150px;
+}
+
+#pricing, #availability {
+    border: 3px solid #49d4e6;
+    border-radius: 30px;
+    margin: 20px auto;
+    color: var(--home1);
+}
+
+#pricing-gov-funding {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#price-box {
+    border: 3px solid #49d4e6;
+    border-radius: 30px;
+    background-color: #b0e8f055;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#price-box > p:first-of-type {
+    color: var(--home1);
+    font-size: 76px;
+    text-align: center;
+    padding-top: 0;
+}
+
+#price-box > p:nth-of-type(2) {
+    color: var(--home1);
+    font-weight: 500;
+    text-align: center;
+}
+
+#price-box > p {
+    line-height: 20px;
+}
+
+.weekday-availability {
+    max-width: 400px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fafafa;
+}
+
+.day {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.day:last-child {
+    border-bottom: none;
+}
+
+.status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status.available {
+    background-color: #4CAF50;
+}
+
+.status.unavailable {
+    background-color: #F44336;
+}
+
+.name {
+    flex: 1;
+}
+
+.hours {
+    font-size: 0.9em;
+    color: #666;
+}
+
+#contact {
+    background-color: var(--primary-colour);
+}
+
+#contact h2 {
+    position: relative;
+    z-index: 1;
+    color: var(--home1);
+}
+
+#duck-mail {
+    width: 40%;
+    margin: 0 auto;
+    position: relative;
+    top: -50px;
+    z-index: 0;
+}
+
+form {
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    top: -70px;
+    padding: 20px;
+    border: 3px solid var(--home1);
+    border-radius: 30px;
+    color: var(--home1);
+}
+
+form * {
+    display: block;
+}
+
+form label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+form input, form textarea {
+    border: 2px solid var(--home1);
+    border-radius: 30px;
+    width: 100%;
+    padding: 8px 10px;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+form textarea {
+    height: 200px;
+}
+
+form > div:not(:last-of-type) {
+    margin-bottom: 20px;
+}
+
+button[type="submit"] {
+    background-color: transparent;
+    border: 2px solid var(--home1);
+    color: var(--home1);
+    border-radius: 30px;
+    margin: 30px auto 10px auto;
+    font-weight: 700;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+@media only screen and (min-width: 621px) and (max-width: 954px) {
+    section h2 {
+        font-size: 38px;
+    }
+
+    #intro-h2-container {
+        max-width: 550px;
+    }
+
+    section p:not(#price-box > p) {
+        font-size: 24px;
+    }
+
+    #life-at-ld ul {
+        font-size: 24px;
+        width: 500px;
+    }
+
+    .cert {
+        font-size: 28px;
+    }
+}
+
+@media only screen and (min-width: 954px) {
+
+    .split-in-half {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #pricing-availability-split {
+        gap: 50px;
+        padding: 0 25px;
+    }
+
+    .weekday-availability {
+        position: relative;
+        top: 45px;
+    }
+
+    #availability {
+        width: 100%;
+    }
+
+    #about-me-imgs {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    #about-me, #contact-split {
+        align-items: center;
+    }
+
+    #pricing, #availability {
+        padding-bottom: 40px;
+        max-width: 900px;
+    }
+
+    #contact-split {
+        padding-top: 100px;
+    }
+
+    #duck-mail {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 1150px) {
+    #about-me {
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (min-width: 1310px) {
+    section h2 {
+        font-size: 38px;
+    }
+
+    #intro-h2-container {
+        max-width: 550px;
+    }
+
+    #life-at-ld ul {
+        font-size: 24px;
+        width: 500px;
+    }
+
+    .cert {
+        font-size: 25px;
+    }
+
+}

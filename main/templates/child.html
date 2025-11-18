@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{child.first_name}} {{child.last_name}}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/child/styles.css" />
+{% endblock %}
+
+{% block header %}
+<h1>{{child.first_name}} {{child.last_name}}</h1>
+{% endblock %}
+
+{% block main %}
+<hr />
+
+<h2>Forms</h2>
+<ul id="forms">
+
+{% if contract %}
+<li class="complete">Contract Complete ✅</li>
+{% else %}
+<li><a href="{% url 'child_contract' child.pk %}">Contract 📝</a></li>
+{% endif %}
+
+{% if consent %}
+<li class="complete">Consent Form Complete ✅</li>
+{% else %}
+<li><a href="{% url 'child_consent' child.pk %}">Consent Form 📝</a></li>
+{% endif %}
+
+{% if record %}
+<li class="complete">Child Record Complete ✅</li>
+{% else %}
+<li><a href="{% url 'child_record' child.pk %}">Child Record 📝</a></li>
+{% endif %}
+</ul>
+
+<hr />
+{% endblock %}

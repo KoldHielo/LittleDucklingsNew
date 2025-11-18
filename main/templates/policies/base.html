@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<meta name="description" content="Read all policies at {{ trading_name }}, including Safeguarding, Health & Safety, Behaviour Management, GDPR, Complaints, and more, to see how we care for children safely and responsibly." />
+<meta property="og:title" content="{{ trading_name }} - {% block policy %}{% endblock %}" />
+<meta property="og:description" content="Read all policies at {{ trading_name }}, including Safeguarding, Health & Safety, Behaviour Management, GDPR, Complaints, and more, to see how we care for children safely and responsibly." />
+<meta property="og:image" content="{{ full_url }}/static/base/images/logo.png" />
+<meta property="og:url" content="{{ full_url }}/policies" />
+<meta property="og:type" content="website" />
+<meta property="og:logo" content="{{ full_url }}/static/base/images/logo.png" />
+<meta name="twitter:title" content="{{ trading_name }} - {% block policy2 %}{% endblock %}" />
+<meta name="twitter:description" content="Read all policies at {{ trading_name }}, including Safeguarding, Health & Safety, Behaviour Management, GDPR, Complaints, and more, to see how we care for children safely and responsibly." />
+<meta name="twitter:image" content="{{ full_url }}/static/base/images/logo.png" />
+
+<link rel="stylesheet" href="/static/policies/styles.css" />
+{% endblock %}
+
+{% block header %}
+<h1>{% block policy3 %}{% endblock %}</h1>
+{% endblock %}
+
+{% block main %}
+<section id="policies" class="policies-page">
+{% block policy_contents %}
+{% endblock %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/policies/script.js"></script>
+{% endblock %}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Consent Forms</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #333; line-height: 1.5; padding: 20px;">
+
+<header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="margin: 0; font-size: 24px;">Consent Forms</h1>
+    <p style="margin: 5px 0;">Childminder: Laura Oldfield</p>
+    <p style="margin: 5px 0;">Address: 2 The Greenways, Edge View Road, Baddeley Green, Stoke-on-Trent, ST2 7HT</p>
+    <p style="margin: 5px 0;">Telephone: 07547635016</p>
+    <p style="margin: 5px 0;">Ofsted Registration Number: 2578224</p>
+</header>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Child Information</h2>
+    <p><strong>Child Name:</strong> {{ consent.child.first_name }} {{ consent.child.last_name }}</p>
+    <p><strong>Date of Birth:</strong> {{ consent.child.dob|date:"d/m/Y" }}</p>
+</section>
+
+<!-- Policies and Procedures -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Policies and Procedures Consent</h2>
+    <p>I have seen the Ofsted Registration certificate for Laura Oldfield and have read and understood the policies and procedures. I agree to abide by them.</p>
+    <p><strong>Signature:</strong> {{ consent.policies_signature }}</p>
+</section>
+
+<!-- Complaints -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Complaints Consent</h2>
+    <p>I know the procedure for making a complaint and have been supplied with the Ofsted Complaints Line Number.</p>
+    <p><strong>Signature:</strong> {{ consent.complaints_signature }}</p>
+</section>
+
+<!-- Emergency Treatment -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Emergency Treatment Consent</h2>
+    <p>I give permission for my child to receive Emergency First Aid or be taken to Accident & Emergency if necessary. I also agree medication can be administered as per my child’s medication record.</p>
+    <p><strong>Signature:</strong> {{ consent.emergency_signature }}</p>
+</section>
+
+<!-- Emergency Caregiver -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Emergency Caregiver Consent</h2>
+    <p>I am aware that in an emergency my child may be left with a suitable person other than Laura Oldfield and give permission for this.</p>
+    <p><strong>Signature:</strong> {{ consent.emergency_caregiver_signature }}</p>
+</section>
+
+<!-- Outings -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Outings Consent</h2>
+    <p>I give permission for my child to go on local outings (parks, library, shops, etc.) with Laura Oldfield.</p>
+    <p><strong>Signature:</strong> {{ consent.outings_signature }}</p>
+</section>
+
+<!-- Photos -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Photographs Consent</h2>
+    <p>I give permission for photographs of my child to be taken for records, observations, and (if agreed) shared securely with parents.</p>
+    <p><strong>Signature:</strong> {{ consent.photos_signature }}</p>
+</section>
+
+<!-- Transport -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Transport Consent</h2>
+    <p>I give permission for my child to travel in Laura Oldfield's vehicle. I understand appropriate safety restraints will always be used.</p>
+    <p><strong>Signature:</strong> {{ consent.transport_signature }}</p>
+</section>
+
+<!-- Equipment -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Play Equipment Consent</h2>
+    <p>I give permission for my child to play on large play equipment at the childminder’s or in play areas.</p>
+    <p><strong>Signature:</strong> {{ consent.equipment_signature }}</p>
+</section>
+
+<!-- First Aid -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">First Aid Consent</h2>
+    <p>I give permission for Laura Oldfield to administer first aid and seek emergency medical treatment if required.</p>
+    <p><strong>Signature:</strong> {{ consent.firstaid_signature }}</p>
+</section>
+
+<!-- Sharing -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Sharing Consent</h2>
+    <p>I give permission for Laura Oldfield to share observations and photos with my child’s pre-school.</p>
+    <p><strong>Signature:</strong> {{ consent.sharing_signature }}</p>
+</section>
+
+<!-- Plasters -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Plasters Consent</h2>
+    <p>I give permission for Laura Oldfield to apply a plaster if necessary.</p>
+    <p><strong>Signature:</strong> {{ consent.plaster_signature }}</p>
+</section>
+
+<!-- Sun Cream -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Sun Cream Consent</h2>
+    <p>I give permission for Laura Oldfield to use suncream, nappy cream, and wipes if applicable.</p>
+    <p><strong>Signature:</strong> {{ consent.suncream_wipes_signature }}</p>
+</section>
+
+<!-- Calpol -->
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Calpol / Emergency Medicine Consent</h2>
+    <p>I give permission for Laura Oldfield to administer age-appropriate medicine (e.g. Calpol) in emergencies until I can collect my child.</p>
+    <p><strong>Signature:</strong> {{ consent.calpol_signature }}</p>
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Final Agreement</h2>
+    <p>I confirm that I have read, understood, and agree to the above consents.</p>
+    <p><strong>Parent Signature:</strong> {{ consent.parent_signature }}</p>
+    <p><strong>Date / Time:</strong> {{ consent.parent_signed_at|date:"d/m/Y H:i" }}</p>
+    <p><strong>Parent IP:</strong> {{ consent.parent_ip }}</p>
+</section>
+
+</body>
+</html>

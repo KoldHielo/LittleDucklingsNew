@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/parent_dashboard/styles.css" />
+{% endblock %}
+
+{% block header %}
+<h1>Dashboard</h1>
+{% endblock %}
+
+{% block main %}
+<hr />
+
+<h2>Utilities</h2>
+<ul id="children">
+<li><a href="{% url 'child_register' %}">Child Register</a></li>
+</ul>
+
+<hr />
+
+{% endblock %}

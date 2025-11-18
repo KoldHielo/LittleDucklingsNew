@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Childminding Contract</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #333; line-height: 1.5; padding: 20px;">
+
+<header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="margin: 0; font-size: 24px;">Childminding Contract</h1>
+    <p style="margin: 5px 0;">Childminder: Laura Oldfield</p>
+    <p style="margin: 5px 0;">Address: 2 The Greenways, Edge View Road, Baddeley Green, Stoke-on-Trent, ST2 7HT</p>
+    <p style="margin: 5px 0;">Telephone: 07547635016</p>
+    <p style="margin: 5px 0;">Ofsted Registration Number: 2578224</p>
+</header>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Child Information</h2>
+    <p><strong>Child Name:</strong> {{ contract.child.first_name }} {{ contract.child.last_name }}</p>
+    <p><strong>Date of Birth:</strong> {{ contract.child.dob|date:"d/m/Y" }}</p>
+    <p><strong>Contract Start Date:</strong> {{ contract.child.get_contracted_start_date_display }}</p>
+    <p><strong>Contracted Days:</strong> {{ contract.child.get_contracted_days_display }}</p>
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Parental Responsibility</h2>
+
+    <h3 style="margin-bottom: 5px;">Parent 1</h3>
+    <p><strong>Name:</strong> {{ contract.parent1_name }}</p>
+    <p><strong>Address:</strong> {{ contract.parent1_address }}</p>
+    <p><strong>Telephone (Home):</strong> {{ contract.parent1_telephone_home }}</p>
+    <p><strong>Telephone (Work):</strong> {{ contract.parent1_telephone_work }}</p>
+    <p><strong>Telephone (Mobile):</strong> {{ contract.parent1_telephone_mobile }}</p>
+
+    {% if contract.parent2_name %}
+    <h3 style="margin-top: 10px; margin-bottom: 5px;">Parent 2</h3>
+    <p><strong>Name:</strong> {{ contract.parent2_name }}</p>
+    <p><strong>Address:</strong> {{ contract.parent2_address }}</p>
+    <p><strong>Telephone (Home):</strong> {{ contract.parent2_telephone_home }}</p>
+    <p><strong>Telephone (Work):</strong> {{ contract.parent2_telephone_work }}</p>
+    <p><strong>Telephone (Mobile):</strong> {{ contract.parent2_telephone_mobile }}</p>
+    {% endif %}
+
+    {% if contract.legal_contact %}
+    <h3 style="margin-top: 10px; margin-bottom: 5px;">Legal Contact</h3>
+    <p>{{ contract.legal_contact }}</p>
+    {% endif %}
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Collectors & Collection Password</h2>
+    <p><strong>Authorised Collectors:</strong> {{ contract.authorised_collectors }}</p>
+    <p><strong>Collection Password:</strong> {{ contract.collection_password }}</p>
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Fees & Conditions</h2>
+    <p><strong>Day Fee:</strong> £{{ contract.day_fee_gbp }}</p>
+    {% if contract.extra_charges %}
+    <p><strong>Extra Charges / Notes:</strong></p>
+    <p>{{ contract.extra_charges|linebreaks }}</p>
+    {% endif %}
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Contract Details</h2>
+    <p><strong>Start Date:</strong> {{ contract.start_date|date:"d/m/Y" }}</p>
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Agreement</h2>
+    <p><strong>Parent Signature:</strong> {{ contract.parent_signature }}</p>
+    <p><strong>Date / Time:</strong> {{ contract.parent_signed_at|date:"d/m/Y H:i" }}</p>
+    <p><strong>Parent IP:</strong> {{ contract.parent_ip }}</p>
+    <p><strong>Childminder Signature:</strong> {{ contract.childminder_signature }}</p>
+    <p><strong>Date / Time:</strong> {{ contract.childminder_signed_at|date:"d/m/Y H:i" }}</p>
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Policies & Information</h2>
+
+    <h3 style="margin-bottom: 5px;">Early Arrivals / Late Collections</h3>
+    <p>Early arrivals will need to be arranged with the childminder and charged at £1.50 per 15 minutes. Late collections will also be charged at £1.50 per 15 minutes.</p>
+
+    <h3 style="margin-bottom: 5px;">Holidays</h3>
+    <p>Parents on holiday during times when the childminder is available will still be required to pay normal fees. The childminder’s own holidays will not incur fees.</p>
+
+    <h3 style="margin-bottom: 5px;">Illness</h3>
+    <p>If a child is unable to attend due to illness, original fees will still be charged. If the childminder is ill, no fees will be charged for this period.</p>
+
+    <h3 style="margin-bottom: 5px;">Bank Holidays & Training Days</h3>
+    <p>The childminder will not be open on bank holidays. Training days may be arranged on non-working days; parents will not be charged for these.</p>
+
+    <h3 style="margin-bottom: 5px;">Payments</h3>
+    <p>Fees are payable 4-weekly in advance. Accepted methods: Bank Transfer (BACS) or cash. Late payments incur a £5/day penalty unless agreed. Contract termination may occur if fees remain unpaid.</p>
+
+    <h3 style="margin-bottom: 5px;">Settling In Agreement</h3>
+    <p>Parents and childminder can arrange a settling-in period. Sessions must be paid at the normal rate. The childminder may extend this period if needed for the child’s welfare.</p>
+
+    <h3 style="margin-bottom: 5px;">Contract Termination</h3>
+    <p>One month’s notice in writing is required for termination by either parent or childminder. All fees must be paid in full before contract termination.</p>
+</section>
+
+<section style="margin-bottom: 20px;">
+    <h2 style="border-bottom: 1px solid #ccc; padding-bottom: 5px;">Confirmation</h2>
+    <p>As the Parent/Carer, I agree that all information is correct, and I accept the conditions set out in this agreement.</p>
+    <p><strong>Parent Signature:</strong> {{ contract.parent_signature }}</p>
+    <p><strong>Date:</strong> {{ contract.parent_signed_at|date:"d/m/Y H:i" }}</p>
+
+    <p>As the Childminder, I agree to provide suitable activities, feedback, comply with Ofsted requirements, and store documentation securely.</p>
+    <p><strong>Childminder Signature:</strong> {{ contract.childminder_signature }}</p>
+    <p><strong>Date:</strong> {{ contract.childminder_signed_at|date:"d/m/Y H:i" }}</p>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Password Reset{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/login/styles.css" />
+<style>
+    form button {
+        font-size: 15px;
+    }
+
+    form {
+        margin-bottom: 50px;
+    }
+</style>
+{% endblock %}
+
+{% block header %}
+<h1>Password Reset</h1>
+
+<form action="{% url 'password_reset' %}" method="post">
+    {% csrf_token %}
+    <div>
+        <label for="email">Email:</label>
+        <input id="email" type="email" autocomplete="email" name="email" required />
+        <input type="hidden" name="a" />
+        <input type="hidden" name="b" />
+    </div>
+    <button type="submit">Send Reset Link</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/forgot_password/reset/script.js"></script>
+{% endblock %}

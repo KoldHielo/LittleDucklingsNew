@@ -1,0 +1,34 @@
+header {
+    margin-top: var(--nav-height);
+}
+
+#photos {
+    padding-top: 50px;
+    display: grid;
+    gap: 50px 20px;
+}
+
+#photos img {
+    width: 80%;
+    max-width: 320px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+    #photos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (min-width: 1016px) {
+    #photos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (min-width: 1523px) {
+    #photos {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

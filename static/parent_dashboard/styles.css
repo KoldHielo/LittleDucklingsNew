@@ -1,0 +1,29 @@
+header {
+    margin: var(--nav-height) auto 30px auto;
+}
+
+#children {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    list-style: none;
+    font-size: 25px;
+    color: var(--secondary-colour);
+}
+
+#children li {
+    padding: 6px 0;
+}
+
+#children li a:hover {
+    color: #e48f40;
+    text-decoration: underline;
+}
+
+hr {
+    border: 3px solid var(--secondary-colour);
+}
+
+hr:not(:first-of-type) {
+    margin: 40px 0;
+}

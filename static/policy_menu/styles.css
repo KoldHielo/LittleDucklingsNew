@@ -1,0 +1,44 @@
+header {
+    margin-top: var(--nav-height);
+}
+
+#policy-links {
+    width: 83%;
+    margin: 0 auto;
+    display: grid;
+    gap: 30px;
+}
+
+#policy-links a {
+    display: block;
+    text-align: center;
+    background-color: var(--home1);
+    color: var(--primary-colour);
+    padding: 20px;
+    border-radius: 30px;
+    border: 2px solid var(--secondary-colour);
+    font-weight: 800;
+}
+
+#policy-links a:hover {
+    border-color: #e48f40;
+    transform: scale(1.1);
+}
+
+@media (min-width: 677px) {
+    #policy-links {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1087px) {
+    #policy-links {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1522px) {
+    #policy-links {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

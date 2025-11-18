@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<meta name="description" content="Read all policies at {{ trading_name }}, including Safeguarding, Health & Safety, Behaviour Management, GDPR, Complaints, and more, to see how we care for children safely and responsibly." />
+<meta property="og:title" content="{{ trading_name }} - Policies" />
+<meta property="og:description" content="Read all policies at {{ trading_name }}, including Safeguarding, Health & Safety, Behaviour Management, GDPR, Complaints, and more, to see how we care for children safely and responsibly." />
+<meta property="og:image" content="{{ full_url }}/static/base/images/logo.png" />
+<meta property="og:url" content="{{ full_url }}/policies" />
+<meta property="og:type" content="website" />
+<meta property="og:logo" content="{{ full_url }}/static/base/images/logo.png" />
+<meta name="twitter:title" content="{{ trading_name }} - Policies" />
+<meta name="twitter:description" content="Read all policies at {{ trading_name }}, including Safeguarding, Health & Safety, Behaviour Management, GDPR, Complaints, and more, to see how we care for children safely and responsibly." />
+<meta name="twitter:image" content="{{ full_url }}/static/base/images/logo.png" />
+
+<link rel="stylesheet" href="/static/policy_menu/styles.css" />
+{% endblock %}
+
+{% block header %}
+<h1>Policies</h1>
+{% endblock %}
+
+{% block main %}
+<section id="policy-links">
+    <a href="{% url 'get_policy' 'accident-procedure' %}">Accident Procedure</a>
+    <a href="{% url 'get_policy' 'attendance-record' %}">Attendance Record</a>
+    <a href="{% url 'get_policy' 'behaviour-management-policy' %}">Behaviour Management Policy</a>
+    <a href="{% url 'get_policy' 'complaints-policy' %}">Complaints Policy</a>
+    <a href="{% url 'get_policy' 'doorbell-video-policy' %}">Doorbell Video Policy</a>
+    <a href="{% url 'get_policy' 'emergency-evacuation-policy' %}">Emergency Evacuation Policy and Procedure</a>
+    <a href="{% url 'get_policy' 'equal-opportunities-policy' %}">Equal Opportunities Policy</a>
+    <a href="{% url 'get_policy' 'gdpr-retention-policy' %}">General Data Protection Regulations (GDPR) and Retention Policy</a>
+    <a href="{% url 'get_policy' 'health-safety-policy' %}">Health and Safety Policy</a>
+    <a href="{% url 'get_policy' 'illness-infection-control-policy' %}">Illness and Infection Control Policy</a>
+    <a href="{% url 'get_policy' 'lost-child-policy' %}">Lost Child Policy</a>
+    <a href="{% url 'get_policy' 'medication-policy' %}">Medication Policy</a>
+    <a href="{% url 'get_policy' 'privacy-notice' %}">Privacy Notice</a>
+    <a href="{% url 'get_policy' 'safeguarding-policy' %}">Safeguarding Policy</a>
+    <a href="{% url 'get_policy' 'special-needs-policy' %}">Special Needs Policy</a>
+    <a href="{% url 'get_policy' 'whistleblowing-policy' %}">Whistleblowing Policy</a>
+</section>
+{% endblock %}

@@ -1,0 +1,62 @@
+header {
+    margin-top: var(--nav-height);
+}
+
+h1 {
+    text-align: center;
+    padding: 30px 0 0 0;
+}
+
+form {
+    border: 4px solid var(--home1);
+    width: 85%;
+    max-width: 500px;
+    margin: 50px auto 4px auto;
+    padding: 50px 0;
+}
+
+form div {
+    display: grid;
+    justify-items: center;
+}
+
+form div:not(:last-of-type) {
+    margin-bottom: 30px;
+}
+
+input {
+    width: 70%;
+    border-radius: 30px;
+    padding: 5px 10px;
+    border: 3px solid var(--home1);
+}
+
+label {
+    font-size: 20px;
+}
+
+form button {
+    border: none;
+    border-radius: 30px;
+    background-color: var(--home1);
+    color: #fff;
+    width: 100px;
+    margin: 50px auto 0 auto;
+    display: block;
+    font-size: 17px;
+    padding: 10px 0;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#forgot-password-div {
+    width: 85%;
+    max-width: 500px;
+    margin: 0 auto 50px auto;
+    text-align: right;
+}
+
+#forgot-password-div a {
+    text-decoration: underline;
+    color: var(--secondary-colour);
+}
