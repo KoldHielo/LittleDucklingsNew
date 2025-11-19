@@ -109,3 +109,4 @@ class DailyRegisterAdmin(admin.ModelAdmin):
     list_display = ("child", "clock_in", "clock_out")
     list_filter = ("clock_in", "clock_out")
     search_fields = ("child__first_name", "child__last_name")
+    ordering = ("child__first_name", "clock_in")
