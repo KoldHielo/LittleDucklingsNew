@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import Http404
+from django.http import Http404, HttpRequest
 from django.template import TemplateDoesNotExist
 import os
 from django.contrib.auth import authenticate, login, logout
@@ -69,7 +69,7 @@ def requires_guardians_child(view_func):
 
 # Useful Functions
 
-def create_validation_link(request, user:User, for_view:str) -> str:
+def create_validation_link(request:HttpRequest, user:User, for_view:str) -> str:
     token = default_token_generator.make_token(user)
     path = reverse(for_view, args=[user.pk, token])
     full_url = request.build_absolute_uri(path)
@@ -132,7 +132,7 @@ def child_record_pdf(record):
 # Create your views here.
 
 @inject_context
-def home(request, context=None):
+def home(request:HttpRequest, context=None):
     if request.method == 'POST':
         name = request.POST['nombre']
         email = request.POST['email']
@@ -180,22 +180,22 @@ Message:
     return render(request, 'home.html', context)
 
 @inject_context
-def gallery(request, context=None):
+def gallery(request:HttpRequest, context=None):
     return render(request, 'gallery.html', context)
 
 @inject_context
-def policy_menu(request, context=None):
+def policy_menu(request:HttpRequest, context=None):
     return render(request, 'policy_menu.html', context)
 
 @inject_context
-def get_policy(request, policy_slug, context=None):
+def get_policy(request:HttpRequest, policy_slug, context=None):
     try:
         return render(request, f'policies/{policy_slug}.html', context)
     except TemplateDoesNotExist:
         raise Http404('Policy not found')
 
 @inject_context
-def login_view(request, context=None):
+def login_view(request:HttpRequest, context=None):
     if request.user.is_authenticated:
         messages.error(request, 'Logged in users cannot access the login page. Please log out and try again.')
         return redirect('home')
@@ -213,6 +213,8 @@ def login_view(request, context=None):
             if user is not None:
                 login(request, user)
                 messages.success(request, 'Login Successful')
+                if request.user.is_staff:
+                    return redirect('staff_dashboard')
                 return redirect('parent_dashboard')
             else:
                 messages.error(request, 'Email and password are not a valid combination, please try again.\\n\\nIf you have forgotten your password, please tap the "Forgot Your Password?" link below.')
