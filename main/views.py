@@ -360,6 +360,7 @@ def clock_in_child(request, child_pk):
         else:
             DailyRegister.objects.create(
                 child=child,
+                clock_in=timezone.now()
             )
             messages.success(request, 'Child has been successfully clocked in')
     else:

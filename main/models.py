@@ -201,5 +201,5 @@ class ChildRecord(models.Model):
 
 class DailyRegister(models.Model):
     child = models.ForeignKey(to=Child, on_delete=models.CASCADE)
-    clock_in = models.DateTimeField(auto_now_add=True)
+    clock_in = models.DateTimeField()
     clock_out = models.DateTimeField(blank=True, null=True, default=None)
