@@ -4,54 +4,91 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/static/base/styles.css" />
-        <title>{{ trading_name }} - {% block title %}{% endblock %}</title>
-        <link rel="canonical" href="{{ full_url }}" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="apple-touch-startup-image" href="/favicon.ico">
-        <link rel="apple-touch-icon" href="/favicon.ico">
+        <title>{% block title %}Childminder in {{ location_name }}{% endblock %} | {{ trading_name }}</title>
+        <link rel="canonical" href="{{ canonical_url }}" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/base/images/favicon-32x32.png" />
+        <link rel="icon" type="image/x-icon" href="/static/base/images/favicon.ico" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="apple-touch-startup-image" href="/static/base/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/base/images/apple-touch-icon.png" />
+        <meta name="robots" content="{% block meta_robots %}index,follow,max-image-preview:large{% endblock %}" />
         {% block head %}
-        <meta name="description" content="{{ trading_name }}, an OFSTED registered childcare provider in Baddeley Green, Stoke-on-Trent" />
-        <meta property="og:title" content="{{ trading_name }}" />
-        <meta property="og:description" content="{{ trading_name }}, an OFSTED registered childcare provider in Baddeley Green, Stoke-on-Trent" />
-        <meta property="og:image" content="{{ full_url }}/static/base/images/logo.png" />
-        <meta property="og:url" content="{{ full_url }}" />
+        <meta
+            name="description"
+            content="{{ trading_name }} is an Ofsted registered childminder in {{ location_name }}, offering home-from-home childcare, play-based learning, and family-focused care."
+        />
+        <meta property="og:site_name" content="{{ trading_name }}" />
+        <meta property="og:title" content="Childminder in {{ location_name }} | {{ trading_name }}" />
+        <meta
+            property="og:description"
+            content="{{ trading_name }} is an Ofsted registered childminder in {{ location_name }}, offering home-from-home childcare, play-based learning, and family-focused care."
+        />
+        <meta property="og:image" content="{{ site_url }}/static/base/images/social-share.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="{{ trading_name }} logo and branding" />
+        <meta property="og:url" content="{{ canonical_url }}" />
         <meta property="og:type" content="website" />
-        <meta property="og:logo" content="{{ full_url }}/static/base/images/logo.png" />
-        <meta name="twitter:title" content="{{ trading_name }}" />
-        <meta name="twitter:description" content="{{ trading_name }}, an OFSTED registered childcare provider in Baddeley Green, Stoke-on-Trent" />
-        <meta name="twitter:image" content="{{ full_url }}/static/base/images/logo.png" />
+        <meta property="og:logo" content="{{ site_url }}/static/base/images/logo.png" />
+        <meta name="twitter:title" content="Childminder in {{ location_name }} | {{ trading_name }}" />
+        <meta
+            name="twitter:description"
+            content="{{ trading_name }} is an Ofsted registered childminder in {{ location_name }}, offering home-from-home childcare, play-based learning, and family-focused care."
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="{{ site_url }}/static/base/images/social-share.png" />
+        <meta name="twitter:image:alt" content="{{ trading_name }} logo and branding" />
         {% endblock %}
     </head>
-    <body>
-        <header>
-            <nav>
-                <a id="nav-logo-a" href="{% url 'home' %}" aria-label="{{ trading_name }} Navigation Bar Logo" aria-description="Tap this logo to go to the home page">
-                    <img src="/static/base/images/logo.svg" alt="{{ trading_name }} Logo" />
+    <body class="{% block body_class %}{% endblock %}">
+        <nav class="site-nav">
+            <div class="site-nav__inner">
+                <a
+                    id="nav-logo-a"
+                    class="brand-link"
+                    href="{% url 'home' %}"
+                    aria-label="{{ trading_name }} home"
+                    aria-description="Tap this logo to go to the home page"
+                >
+                    <img src="/static/base/images/logo-nav.png" alt="{{ trading_name }} logo" />
                 </a>
-                <button id="menu-button">
-                    <div class="bar 1"></div>
-                    <div class="bar 2"></div>
-                    <div class="bar 3"></div>
-                </button>
-                <ul id="menu" class="out">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                    <li><a href="{% url 'policy_menu' %}">Policies</a></li>
-                    {% if user.is_authenticated %}
-                        {% if user.is_staff %}
-                        <li><a href="{% url 'staff_dashboard' %}">Dashboard</a></li>
-                        <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                <div class="site-nav__controls">
+                    <button
+                        id="menu-button"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="menu"
+                        aria-label="Open site navigation"
+                    >
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </button>
+                    <ul id="menu" class="out">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                        <li><a href="{% url 'policy_menu' %}">Policies</a></li>
+                        {% if user.is_authenticated %}
+                            {% if user.is_staff %}
+                            <li><a href="{% url 'staff_dashboard' %}">Dashboard</a></li>
+                            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                            {% else %}
+                            <li><a href="{% url 'parent_dashboard' %}">Dashboard</a></li>
+                            {% endif %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
                         {% else %}
-                        <li><a href="{% url 'parent_dashboard' %}">Dashboard</a></li>
+                        <li><a href="{% url 'login' %}">Login</a></li>
                         {% endif %}
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
+                        <li class="menu-cta-item">
+                            <a class="button button-primary" href="{% url 'home' %}#contact">Book a Visit</a>
+                        </li>
+                    </ul>
+                    <a class="button button-primary nav-cta" href="{% url 'home' %}#contact">Book a Visit</a>
+                </div>
+            </div>
+        </nav>
+        <header>
             {% block header %}
             {% endblock %}
         </header>
@@ -59,54 +96,85 @@
             {% block main %}
             {% endblock %}
         </main>
-        <hr id="footer-hr">
         <footer>
-            <div id="footer-logo-and-h2">
-                <img id="footer-logo" src="/static/base/images/logo.svg" alt="{{trading_name}} Logo">
-                <h2 id="footer-h2">Thank You For Visiting Us!</h2>
-            </div>
-            <div id="ci-and-flower">
-                <div id="footer-info">
-                    <div class="contact-info">
-                        <img src="/static/base/images/mail.png" alt="Mail Icon" />
-                        <a href="mailto:info@littleducklingschildminding.co.uk">info@littleducklingschildminding.co.uk</a>
+            <div class="footer-shell">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <img id="footer-logo" src="/static/base/images/logo-site.png" alt="{{ trading_name }} logo" />
+                        <p class="footer-brand__copy">
+                            A calm, play-led childminding setting where children can feel safe, settled, and full
+                            of curiosity.
+                        </p>
                     </div>
-                    <div class="contact-info">
-                        <img src="/static/base/images/phone_icon.png" alt="Telephone Icon" />
-                        <a href="tel:+447547635016">07547 635016</a>
-                    </div>
-                    <div class="contact-info">
-                        <img src="/static/base/images/location.png" alt="Location Icon" />
-                        <a href="https://www.google.com/maps?q=Baddeley+Green,+Stoke-on-Trent" target="_blank">Baddeley Green, Stoke-on-Trent</a>
+                    <div class="footer-main">
+                        <div>
+                            <p class="eyebrow footer-eyebrow">Get in touch</p>
+                            <h2 id="footer-h2">Thank you for visiting us</h2>
+                            <p class="footer-intro">
+                                We would love to welcome you for a visit and show you what life at Little Ducklings
+                                feels like day to day.
+                            </p>
+                        </div>
+                        <div id="footer-info">
+                            <a class="contact-card" href="mailto:info@littleducklingschildminding.co.uk">
+                                <span class="contact-card__label">Email</span>
+                                <span class="contact-card__value">info@littleducklingschildminding.co.uk</span>
+                            </a>
+                            <a class="contact-card" href="tel:+447547635016">
+                                <span class="contact-card__label">Telephone</span>
+                                <span class="contact-card__value">07547 635016</span>
+                            </a>
+                            <a
+                                class="contact-card"
+                                href="https://www.google.com/maps?q=Baddeley+Green,+Stoke-on-Trent"
+                                target="_blank"
+                            >
+                                <span class="contact-card__label">Location</span>
+                                <span class="contact-card__value">Baddeley Green, Stoke-on-Trent</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <img id="little-flower" src="/static/base/images/flower.png" alt="Little Orange Flower" />
-            </div>
-            <div id="social-media">
-                <a id="facebook-footer-a" href="https://www.facebook.com/profile.php?id=61577982127235" target="_blank">
-                    <img class="sm-icon" src="/static/base/images/facebook.png" alt="Facebook Icon" />
-                </a>
-                <a id="instagram-footer-a" href="https://www.instagram.com/_littleducklings/" target="_blank">
-                    <img class="sm-icon" src="/static/base/images/instagram.png" alt="Instagram Icon" />
-                </a>
-            </div>
-            <div id="kowd-stamp">
-                <a href="https://kowd.uk" target="_blank">
-                    <img src="https://kowd.uk/images/KOWD.svg" alt="KOWD Badge">
-                </a>
-                <p>Developed &amp; Powered by <a href="https://kowd.uk" target="_blank">KOWD</a></p>
+                <div class="footer-subgrid">
+                    <div id="social-media">
+                        <a
+                            id="facebook-footer-a"
+                            class="social-link"
+                            href="https://www.facebook.com/profile.php?id=61577982127235"
+                            target="_blank"
+                        >
+                            <img class="sm-icon" src="/static/base/images/facebook.png" alt="Facebook Icon" />
+                            <span>Facebook</span>
+                        </a>
+                        <a
+                            id="instagram-footer-a"
+                            class="social-link"
+                            href="https://www.instagram.com/_littleducklings/"
+                            target="_blank"
+                        >
+                            <img class="sm-icon" src="/static/base/images/instagram.png" alt="Instagram Icon" />
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                    <div id="kowd-stamp">
+                        <a href="https://kowd.uk" target="_blank">
+                            <img src="https://kowd.uk/images/KOWD.svg" alt="KOWD Badge" />
+                        </a>
+                        <p>Developed &amp; Powered by <a href="https://kowd.uk" target="_blank">KOWD</a></p>
+                    </div>
+                </div>
             </div>
         </footer>
-    <script src="/static/base/script.js"></script>
-    {% block scripts %}
-    {% endblock %}
+        <script src="/static/base/script.js"></script>
+        {% block scripts %}
+        {% endblock %}
 
-    {% if messages %}
-    <script>
-        {% for message in messages %}
-        alert('{{ message|safe }}')
-        {% endfor %}
-    </script>
-    {% endif %}
+        {% if messages %}
+        <script>
+            {% for message in messages %}
+            alert('{{ message|safe }}')
+            {% endfor %}
+        </script>
+        {% endif %}
     </body>
 </html>

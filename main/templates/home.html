@@ -1,174 +1,407 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Childminder in {{ location_name }}{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
 
 {% block head %}
-{{ block.super }}
+<meta
+    name="description"
+    content="{{ trading_name }} is an Ofsted registered childminder in {{ location_name }}, offering home-from-home childcare, play-based learning, outdoor adventures, and a warm family setting."
+/>
+<meta property="og:site_name" content="{{ trading_name }}" />
+<meta property="og:title" content="Childminder in {{ location_name }} | {{ trading_name }}" />
+<meta
+    property="og:description"
+    content="{{ trading_name }} is an Ofsted registered childminder in {{ location_name }}, offering home-from-home childcare, play-based learning, outdoor adventures, and a warm family setting."
+/>
+<meta property="og:image" content="{{ site_url }}/static/base/images/social-share.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="{{ trading_name }} logo and branding" />
+<meta property="og:url" content="{{ canonical_url }}" />
+<meta property="og:type" content="website" />
+<meta property="og:logo" content="{{ site_url }}/static/base/images/logo.png" />
+<meta name="twitter:title" content="Childminder in {{ location_name }} | {{ trading_name }}" />
+<meta
+    name="twitter:description"
+    content="{{ trading_name }} is an Ofsted registered childminder in {{ location_name }}, offering home-from-home childcare, play-based learning, outdoor adventures, and a warm family setting."
+/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{{ site_url }}/static/base/images/social-share.png" />
+<meta name="twitter:image:alt" content="{{ trading_name }} logo and branding" />
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "{{ trading_name|escapejs }}",
+    "url": "{{ site_url }}/",
+    "image": "{{ site_url }}/static/base/images/social-share.png",
+    "logo": "{{ site_url }}/static/base/images/logo.png",
+    "description": "{{ trading_name|escapejs }} is an Ofsted registered childminder in {{ location_name|escapejs }}, offering home-from-home childcare, play-based learning, outdoor adventures, and a warm family setting.",
+    "telephone": "+447547635016",
+    "email": "info@littleducklingschildminding.co.uk",
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Baddeley Green",
+        "addressRegion": "Stoke-on-Trent",
+        "addressCountry": "GB"
+    },
+    "areaServed": [
+        "Baddeley Green",
+        "Stoke-on-Trent"
+    ],
+    "sameAs": [
+        "https://www.facebook.com/profile.php?id=61577982127235",
+        "https://www.instagram.com/_littleducklings/"
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What age groups do you care for?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Little Ducklings Childminding cares for children from newborn through to 10 years old, with routines and activities tailored to each stage."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What does a typical day look like?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Days include free play, planned activities, meals, outdoor time, and quiet moments, all adapted around the children attending."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How do I arrange a visit?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Families can send a message through the website or get in touch by phone or email to arrange a visit to the setting in Baddeley Green, Stoke-on-Trent."
+            }
+        }
+    ]
+}
+</script>
 <link rel="stylesheet" href="/static/home/styles.css" />
 {% endblock %}
 
 {% block header %}
-<div id="main-intro">
-    <img id="header-logo" src="/static/base/images/logo.svg" alt="{{trading_name}} Logo" />
-</div>
+<section class="hero">
+    <div class="section-shell hero__grid">
+        <div class="hero__copy">
+            <p class="eyebrow">Ofsted registered childminding in Baddeley Green</p>
+            <h1>
+                A nurturing <span>home-from-home</span> where your little duckling can thrive.
+            </h1>
+            <p class="hero__lead">
+                Laura offers a warm, creative environment tailored to each child's pace, with calm
+                routines, playful learning, and the reassurance of a true family setting.
+            </p>
+            <div class="hero__actions">
+                <a class="button button-primary" href="#contact">Book a Visit</a>
+                <a class="button button-secondary" href="{% url 'gallery' %}">View Gallery</a>
+            </div>
+            <ul class="hero__badges">
+                <li>
+                    <strong>Ofsted rated</strong>
+                    <span>Trusted childcare in a safe setting.</span>
+                </li>
+                <li>
+                    <strong>BA (Hons)</strong>
+                    <span>Early Childhood Studies expertise.</span>
+                </li>
+                <li>
+                    <strong>First aid trained</strong>
+                    <span>Prepared, calm support every day.</span>
+                </li>
+            </ul>
+        </div>
+        <div class="hero__visual">
+            <div class="hero__halo"></div>
+            <div class="hero__image-shell">
+                <img
+                    src="/static/home/images/laura_and_april.jpeg"
+                    alt="Laura smiling outdoors with a child in her care"
+                />
+            </div>
+            <div class="hero__note">
+                <p class="eyebrow">Little Ducklings</p>
+                <p>Play-led days, plenty of outdoor time, and a home environment built around confidence and care.</p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
 
 {% block main %}
-<section id="about-me" class="split-in-half">
-    <div>
-        <div id="intro-h2-container">
-            <img class="intro-rainbow" src="/static/home/images/rainbow.png" alt="Rainbow Icon" />
-            <h2>About Me</h2>
-            <img class="intro-rainbow" src="/static/home/images/rainbow.png" alt="Rainbow Icon" />
-        </div>
-        <div id="about-me-imgs">
-            <img id="laura-ofsted" src="/static/home/images/laura_ofsted.png" alt="Image of Childminder Laura Oldfield, Ofsted Rating - Good" />
-        </div>
+<section class="trust-strip">
+    <div class="section-shell trust-strip__grid">
+        <article class="trust-pill">
+            <span class="trust-pill__number">01</span>
+            <h2>Home-from-home</h2>
+            <p>Comforting routines in a cosy family setting.</p>
+        </article>
+        <article class="trust-pill">
+            <span class="trust-pill__number">02</span>
+            <h2>First aid</h2>
+            <p>Paediatric first aid training for peace of mind.</p>
+        </article>
+        <article class="trust-pill">
+            <span class="trust-pill__number">03</span>
+            <h2>Safeguarding</h2>
+            <p>Children's wellbeing is always the first priority.</p>
+        </article>
+        <article class="trust-pill">
+            <span class="trust-pill__number">04</span>
+            <h2>EYFS learning</h2>
+            <p>Activities planned around play, growth, and curiosity.</p>
+        </article>
+        <article class="trust-pill">
+            <span class="trust-pill__number">05</span>
+            <h2>Healthy meals</h2>
+            <p>Nutritious home-cooked food, snacks, and drinks.</p>
+        </article>
+        <article class="trust-pill">
+            <span class="trust-pill__number">06</span>
+            <h2>Outdoor play</h2>
+            <p>Fresh-air adventures at home and around the local area.</p>
+        </article>
     </div>
-    <div>
-        <p>Hello, I’m Laura and I’m the proud owner of Little Ducklings Childminding which is based in <a class="highlight" style="color: #fff;" href="https://www.google.com/maps?q=Baddeley+Green,+Stoke-on-Trent" target="_blank">Baddeley Green, Stoke-on-Trent</a>. I am married to my husband Kieran and we have 2 children together. A little girl and a little boy. I offer a cosy home to home environment as I believe this is the most comforting for children and helps them feel most at ease when transitioning into an early years setting.</p>
-        <p>Whilst having lots of fun through play I will carefully plan and set up activities for the children to participate in which will help their learning and development. Their interests and needs will always be at the focus of attention.</p>
-        <p>We will have lots of free flow play opportunities and I will implement the Early Years Foundation Stage curriculum to help your child to meet their developmental milestones during their time with me. I aspire to help each child to become happy, confident and to have fun through play. I like to work alongside families and help them in anyway possible.</p>
-        <p>Thank you for considering Little Ducklings. I would love to welcome you and your little one. If you would like to arrange a visit please complete the enquiry form or contact me on <a class="highlight" style="color: #fff;" href="tel:+447547635016">07547635016</a></p>
-    </div>
-
 </section>
 
-<div class="split-in-half">
-    <section id="life-at-ld">
-        <h2>Life At Little Ducklings</h2>
-        <img id="happy-duck" src="/static/home/images/duck_family_nobg.png" alt="Duck Family Image" />
-        <ul>
-            <li>Weekly and monthly themes</li>
-            <li>Lots of outdoor play</li>
-            <li>Messy play and sensory based learning</li>
-            <li>Days out and activities in the area included</li>
-            <li>Healthy snacks and drinks</li>
-            <li>Nutritious home cooked meals</li>
-            <li>Flexible routines to support children</li>
-        </ul>
-        
-        <p>Whether we're painting, singing, exploring outside, or enjoying a quiet moment with a story, every child is encouraged to feel confident, happy, and loved at Little Ducklings.</p>
-    </section>
-
-    <section id="certs">
-        <h2>My Experience</h2>
-
-        <div id="cert-container">
-            <div class="cert">
-                <img src="/static/home/images/bahons_ecs.png" alt="BA Hons Education Icon" />
-                <h3>BA Hons Early Childhood Studies</h3>
-            </div>
-            <div class="cert">
-                <img src="/static/home/images/children.png" alt="Children Icon" />
-                <h3>Newborn to 10 Year Olds</h3>
-            </div>
-            <div class="cert">
-                <img src="/static/home/images/first_aid_nobg.png" alt="First Aid Icon" />
-                <h3>Paediatric First Aid Trained</h3>
-            </div>
-            <div class="cert">
-                <img src="/static/home/images/safeguarding_nobg.png" alt="Safeguarding Icon" />
-                <h3>Designated Safeguarding Lead</h3>
-            </div>
-            <div class="cert">
-                <img src="/static/home/images/certificate_nobg.png" alt="Certificate Icon" />
-                <h3>Level 1 Safeguarding</h3>
-            </div>
-            <div class="cert">
-                <img src="/static/home/images/prevent.png" alt="Prevent Icon" />
-                <h3>Prevent Duty</h3>
-            </div>
-            <div class="cert">
-                <img src="/static/home/images/fah.png" alt="Dinner Plate with Cuttelry Icon" />
-                <h3>Level 2 Food Hygiene</h3>
+<section class="about-section">
+    <div class="section-shell about-section__grid">
+        <div class="about-section__visual">
+            <div class="about-section__image-frame">
+                <img
+                    src="/static/home/images/laura_ofsted.png"
+                    alt="Laura Oldfield with her Ofsted rating"
+                />
             </div>
         </div>
-    </section>
-</div>
+        <div class="about-section__content">
+            <p class="eyebrow">Meet Laura</p>
+            <h2>Professional care with a calm, family-first feel.</h2>
+            <p>
+                Hello, I'm Laura and I'm the proud owner of Little Ducklings Childminding in
+                <a href="https://www.google.com/maps?q=Baddeley+Green,+Stoke-on-Trent" target="_blank">Baddeley Green, Stoke-on-Trent</a>.
+                I live here with my husband Kieran and our two children, and I've created the kind
+                of setting that helps little ones feel at ease from the moment they arrive.
+            </p>
+            <p>
+                I believe a home environment can make the transition into childcare feel gentler,
+                warmer, and more reassuring. Children are welcomed into a space where they can play,
+                settle, and grow in confidence while being cared for as individuals.
+            </p>
+            <p>
+                I would love to welcome you and your little one for a visit so you can get a feel
+                for daily life at Little Ducklings yourself.
+            </p>
+            <a class="button-tertiary" href="#contact">Arrange a visit</a>
+        </div>
+    </div>
+</section>
 
-<!--<div id="pricing-availability-split" class="split-in-half">-->
-    <section id="pricing">
-        <h2>Pricing</h2>
-        <div>
-            <div id="price-box" style="padding-top: 20px;">
-                <p><strong>£{{ price_gbp }}</strong></p>
-                <p>per day</p>
+<section class="life-section">
+    <div class="section-shell">
+        <div class="life-section__intro">
+            <p class="eyebrow">Life at Little Ducklings</p>
+            <h2>Structured fun, spontaneous play, and plenty of little moments to explore.</h2>
+            <p>
+                Every week balances gentle routines with hands-on activities so children can follow
+                their interests, build confidence, and enjoy a joyful day.
+            </p>
+        </div>
+        <div class="life-section__cards">
+            <article class="activity-card">
+                <img src="/static/gallery/images/cm1.jpeg" alt="Children colouring and doing crafts" />
+                <div class="activity-card__body">
+                    <h3>Weekly themes</h3>
+                    <p>Play invitations and activities are set up around changing themes and the children's interests.</p>
+                </div>
+            </article>
+            <article class="activity-card">
+                <img src="/static/gallery/images/cm3.jpeg" alt="Outdoor play equipment in the garden" />
+                <div class="activity-card__body">
+                    <h3>Outdoor play</h3>
+                    <p>Fresh-air time helps children move, explore, and make the most of the local area.</p>
+                </div>
+            </article>
+            <article class="activity-card">
+                <img src="/static/gallery/images/cm5.jpeg" alt="Messy play activity with colorful materials" />
+                <div class="activity-card__body">
+                    <h3>Messy and sensory play</h3>
+                    <p>Creative, tactile experiences support confidence, communication, and imagination.</p>
+                </div>
+            </article>
+        </div>
+        <div class="life-section__supporting">
+            <article class="support-card">
+                <h3>Nutritious meals</h3>
+                <p>Healthy snacks and home-cooked meals are part of the day.</p>
+            </article>
+            <article class="support-card">
+                <h3>Flexible routines</h3>
+                <p>Children are supported at their own pace with responsive care.</p>
+            </article>
+            <article class="support-card">
+                <h3>Local outings</h3>
+                <p>Days out and nearby adventures bring variety into the week.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="curriculum-section">
+    <div class="section-shell curriculum-section__grid">
+        <article class="curriculum-card">
+            <p class="eyebrow">EYFS</p>
+            <h2>Play-based learning with space to grow naturally.</h2>
+            <p>
+                Planning is guided by the Early Years Foundation Stage while staying responsive to
+                children's individual interests and developmental stages.
+            </p>
+            <ul>
+                <li>Personal, social, and emotional development</li>
+                <li>Communication and language</li>
+                <li>Physical development</li>
+            </ul>
+        </article>
+        <article class="curriculum-copy">
+            <p class="eyebrow">Approach</p>
+            <h2>Focusing on confidence, curiosity, and everyday wellbeing.</h2>
+            <p>
+                Whilst having lots of fun through play, I carefully plan activities that support each
+                child's learning and development. Their interests and needs stay at the centre of
+                everything we do.
+            </p>
+            <p>
+                Free-flow play, warm relationships, and consistent encouragement help children feel
+                happy, safe, and ready to discover new things.
+            </p>
+            <a class="button-tertiary" href="{% url 'policy_menu' %}">Read the policies</a>
+        </article>
+    </div>
+</section>
+
+<section class="qualifications-section">
+    <div class="section-shell">
+        <div class="section-heading section-heading--center">
+            <p class="eyebrow">Professional qualifications</p>
+            <h2>Experience and training that support every part of the day.</h2>
+        </div>
+        <div class="qualifications-grid">
+            <article class="qualification-chip">BA (Hons) Early Childhood Studies</article>
+            <article class="qualification-chip">Newborn to 10 year olds</article>
+            <article class="qualification-chip">Paediatric first aid trained</article>
+            <article class="qualification-chip">Designated safeguarding lead</article>
+            <article class="qualification-chip">Level 1 safeguarding</article>
+            <article class="qualification-chip">Prevent duty trained</article>
+            <article class="qualification-chip">Level 2 food hygiene</article>
+            <article class="qualification-chip">Family-led, play-based care</article>
+        </div>
+    </div>
+</section>
+
+<section class="pricing-section">
+    <div class="section-shell">
+        <article class="pricing-card">
+            <p class="eyebrow">Simple, transparent fees</p>
+            <h2>&pound;{{ price_gbp }}</h2>
+            <p class="pricing-card__unit">per full day</p>
+            <p class="pricing-card__copy">
+                Government funding and tax-free childcare may help with costs depending on your
+                eligibility.
+                <a href="https://www.childcarechoices.gov.uk/15-and-30-hours-childcare-support" target="_blank">Check support options</a>.
+            </p>
+            <a class="button button-primary" href="#contact">Ask about availability</a>
+        </article>
+    </div>
+</section>
+
+<section class="gallery-preview">
+    <div class="section-shell">
+        <div class="section-heading section-heading--split">
+            <div>
+                <p class="eyebrow">Gallery preview</p>
+                <h2>Snapshots of play, creativity, and everyday discovery.</h2>
+            </div>
+            <a class="button-tertiary" href="{% url 'gallery' %}">See all photos</a>
+        </div>
+        <div class="gallery-preview__grid">
+            <img src="/static/gallery/images/cm2.jpeg" alt="Children playing with play dough" />
+            <img src="/static/gallery/images/cm6.jpeg" alt="Children exploring sensory play outdoors" />
+            <img src="/static/gallery/images/cm7.jpeg" alt="Children enjoying a hands-on activity outside" />
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="section-shell faq-section__inner">
+        <div class="section-heading section-heading--center">
+            <p class="eyebrow">Frequently asked questions</p>
+            <h2>Helpful details before you arrange a visit.</h2>
+        </div>
+        <div class="faq-list">
+            <details>
+                <summary>What age groups do you care for?</summary>
+                <p>I care for children from newborn through to 10 years old, tailoring routines and activities to each stage.</p>
+            </details>
+            <details>
+                <summary>What does a typical day look like?</summary>
+                <p>Days include free play, planned activities, meals, outdoor time, and quiet moments, all adapted around the children attending.</p>
+            </details>
+            <details>
+                <summary>How do I arrange a visit?</summary>
+                <p>Send a message below or get in touch by phone or email and we can arrange a time for you to come and see the setting.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <div class="section-shell contact-section__grid">
+        <div class="contact-section__copy">
+            <p class="eyebrow">Get in touch</p>
+            <h2>Come and see whether Little Ducklings feels right for your family.</h2>
+            <p>
+                If you would like to arrange a visit or ask a question, I would be happy to hear from you.
+            </p>
+            <div class="contact-section__details">
+                <a href="https://www.google.com/maps?q=Baddeley+Green,+Stoke-on-Trent" target="_blank">
+                    Baddeley Green, Stoke-on-Trent
+                </a>
+                <a href="tel:+447547635016">07547 635016</a>
+                <a href="mailto:info@littleducklingschildminding.co.uk">info@littleducklingschildminding.co.uk</a>
             </div>
         </div>
-        <div id="pricing-gov-funding">
-            <p>Government funding may be available to help cover the cost of childcare. You may also be able to claim tax free childcare. To check eligibility please <a class="highlight" href="https://www.childcarechoices.gov.uk/15-and-30-hours-childcare-support" target="_blank">click here</a>.</p>
-        </div>
 
-    </section>
-
-    <!--<section id="availability">
-        <h2>Availability</h2>
-
-        <div class="weekday-availability">
-            <div class="day">
-                <span class="status unavailable"></span>
-                <span class="name">Sunday</span>
-                <span class="hours">Closed</span>
+        <form id="contact-form" action="{% url 'home' %}" method="post" class="contact-form">
+            {% csrf_token %}
+            <div>
+                <label for="name">Your name</label>
+                <input id="name" type="text" name="name" placeholder="Parent or guardian name" required />
             </div>
-            <div class="day">
-                <span class="status unavailable"></span>
-                <span class="name">Monday</span>
-                <span class="hours">Closed</span>
+            <div>
+                <label for="email">Your email</label>
+                <input id="email" type="email" name="email" placeholder="name@example.com" required />
             </div>
-            <div class="day">
-                <span class="status available"></span>
-                <span class="name">Tuesday</span>
-                <span class="hours">08:00 – 18:00</span>
+            <div>
+                <label for="tel">Your telephone</label>
+                <input id="tel" type="tel" name="tel" placeholder="Best number to reach you" required />
             </div>
-            <div class="day">
-                <span class="status available"></span>
-                <span class="name">Wednesday</span>
-                <span class="hours">08:00 – 18:00</span>
+            <div>
+                <label for="msg">Your message</label>
+                <textarea id="msg" name="msg" placeholder="Tell us a little about what you need" required></textarea>
             </div>
-            <div class="day">
-                <span class="status available"></span>
-                <span class="name">Thursday</span>
-                <span class="hours">08:00 – 18:00</span>
-            </div>
-            <div class="day">
-                <span class="status unavailable"></span>
-                <span class="name">Friday</span>
-                <span class="hours">Closed</span>
-            </div>
-            <div class="day">
-                <span class="status unavailable"></span>
-                <span class="name">Saturday</span>
-                <span class="hours">Closed</span>
-            </div>
-        </div>
-
-    </section>
-</div>-->
-
-<section id="contact">
-        <h2>Get in Touch</h2>
-        <div id="contact-split" class="split-in-half">
-            <img id="duck-mail" src="/static/home/images/duck_mail.png" alt="Little Duckling Carrying Mail" />
-
-            <form action="{% url 'home' %}" method="post">
-                {% csrf_token %}
-                <div>
-                    <label for="name">Your Name</label>
-                    <input id="name" type="text" name="name" />
-                </div>
-                <div>
-                    <label for="email">Your Email</label>
-                    <input id="email" type="email" name="email" />
-                </div>
-                <div>
-                    <label for="tel">Your Telephone</label>
-                    <input id="tel" type="tel" name="tel" />
-                </div>
-                <div>
-                    <label for="msg">Your Message</label>
-                    <textarea id="msg" name="msg"></textarea>
-                </div>
+            <div class="honey">
                 <input type="hidden" name="message" />
                 <input type="hidden" name="mensaje" />
                 <input type="hidden" name="letter" />
@@ -176,9 +409,10 @@
                 <input type="hidden" name="mobile" />
                 <input type="hidden" name="telephone" />
                 <input type="hidden" name="telefono" />
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
+            </div>
+            <button class="button button-primary" type="submit">Send message</button>
+        </form>
+    </div>
 </section>
 {% endblock %}
 

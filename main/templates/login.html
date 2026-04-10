@@ -2,35 +2,61 @@
 
 {% block title %}Login{% endblock %}
 
+{% block meta_robots %}noindex, nofollow, noarchive{% endblock %}
+
+{% block body_class %}login-page{% endblock %}
+
 {% block head %}
 <link rel="stylesheet" href="/static/login/styles.css" />
 {% endblock %}
 
 {% block header %}
-<h1>Login</h1>
-
-<form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    <div>
-        <label for="email">Email:</label>
-        <input id="email" type="email" autocomplete="email" name="email" required />
-        <input type="hidden" name="a" />
-        <input type="hidden" name="b" />
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input id="password" type="password" autocomplete="current-password" name="password" required />
-        <input type="hidden" name="c" />
-        <input type="hidden" name="d" />
-    </div>
-    <button type="submit">Login</button>
-</form>
-<div id="forgot-password-div">
-    <a href="{% url 'password_reset' %}">Forgot Your Password?</a>
-</div>
+<section class="page-hero">
+    <p class="eyebrow">Parent area</p>
+    <h1>Log in to view your dashboard and child records.</h1>
+    <p>
+        Use the email address and password linked to your account. If you need help getting back in,
+        you can request a password reset below.
+    </p>
+</section>
 {% endblock %}
 
 {% block main %}
+<section class="section-shell login-shell">
+    <div class="login-panel">
+        <form action="{% url 'login' %}" method="post" class="login-form">
+            {% csrf_token %}
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" autocomplete="email" name="email" required />
+                <input type="hidden" name="a" />
+                <input type="hidden" name="b" />
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input id="password" type="password" autocomplete="current-password" name="password" required />
+                <input type="hidden" name="c" />
+                <input type="hidden" name="d" />
+            </div>
+            <button class="button button-primary" type="submit">Login</button>
+        </form>
+        <div id="forgot-password-div">
+            <a href="{% url 'password_reset' %}">Forgot your password?</a>
+        </div>
+    </div>
+    <aside class="login-aside">
+        <p class="eyebrow">Need a hand?</p>
+        <h2>We can help you get back to the information you need.</h2>
+        <p>
+            If you are unsure whether your account is active, or you have trouble logging in, just
+            get in touch and we can point you in the right direction.
+        </p>
+        <div class="login-aside__links">
+            <a href="mailto:info@littleducklingschildminding.co.uk">info@littleducklingschildminding.co.uk</a>
+            <a href="tel:+447547635016">07547 635016</a>
+        </div>
+    </aside>
+</section>
 {% endblock %}
 
 {% block scripts %}

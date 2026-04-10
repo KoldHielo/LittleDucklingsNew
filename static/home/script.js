@@ -1,29 +1,47 @@
-// Contact Form Honeypot
-const msg = document.querySelector('[name="msg"]');
-const message = document.querySelector('[name="message"]');
-const mensaje = document.querySelector('[name="mensaje"]');
-const letter = document.querySelector('[name="letter"]');
-const tel = document.querySelector('[name="tel"]');
-const phone = document.querySelector('[name="phone"]');
-const telephone = document.querySelector('[name="telephone"]');
-const telefono = document.querySelector('[name="telefono"]');
-const name = document.querySelector('[name="name"]');
-const form = document.querySelector('form');
+const form = document.querySelector('#contact-form');
 
-msg.addEventListener('change', () => {
-    mensaje.value = msg.value;
-    telefono.value = "Go away naughty bots";
-    letter.value = 62668977;
-});
+if (form) {
+    const msg = form.querySelector('[name="msg"]');
+    const message = form.querySelector('[name="message"]');
+    const mensaje = form.querySelector('[name="mensaje"]');
+    const letter = form.querySelector('[name="letter"]');
+    const tel = form.querySelector('[name="tel"]');
+    const phone = form.querySelector('[name="phone"]');
+    const telephone = form.querySelector('[name="telephone"]');
+    const telefono = form.querySelector('[name="telefono"]');
+    const name = form.querySelector('[name="name"]');
 
-tel.addEventListener('change', () => {
-    telephone.value = tel.value;
-    message.value = 'Hooray for no bots';
-});
+    msg?.addEventListener('change', () => {
+        if (mensaje) {
+            mensaje.value = msg.value;
+        }
+        if (telefono) {
+            telefono.value = 'Go away naughty bots';
+        }
+        if (letter) {
+            letter.value = 62668977;
+        }
+    });
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    name.setAttribute('name', 'nombre');
-    phone.value = 82636683;
-    form.submit();
-});
+    tel?.addEventListener('change', () => {
+        if (telephone) {
+            telephone.value = tel.value;
+        }
+        if (message) {
+            message.value = 'Hooray for no bots';
+        }
+    });
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (name) {
+            name.setAttribute('name', 'nombre');
+        }
+        if (phone) {
+            phone.value = 82636683;
+        }
+
+        form.submit();
+    });
+}

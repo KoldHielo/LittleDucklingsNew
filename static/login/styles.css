@@ -1,62 +1,87 @@
-header {
-    margin-top: var(--nav-height);
-}
-
-h1 {
-    text-align: center;
-    padding: 30px 0 0 0;
-}
-
-form {
-    border: 4px solid var(--home1);
-    width: 85%;
-    max-width: 500px;
-    margin: 50px auto 4px auto;
-    padding: 50px 0;
-}
-
-form div {
+.login-shell {
     display: grid;
-    justify-items: center;
+    gap: 1.5rem;
+    padding-bottom: 5rem;
+    align-items: start;
 }
 
-form div:not(:last-of-type) {
-    margin-bottom: 30px;
+.login-panel,
+.login-aside {
+    padding: clamp(1.5rem, 3vw, 2.3rem);
+    border-radius: 2rem;
+    box-shadow: var(--shadow-soft);
 }
 
-input {
-    width: 70%;
-    border-radius: 30px;
-    padding: 5px 10px;
-    border: 3px solid var(--home1);
+.login-panel {
+    background: rgba(255, 255, 255, 0.76);
 }
 
-label {
-    font-size: 20px;
+.login-panel form > div + div,
+header > form > div + div {
+    margin-top: 1rem;
 }
 
-form button {
-    border: none;
-    border-radius: 30px;
-    background-color: var(--home1);
-    color: #fff;
-    width: 100px;
-    margin: 50px auto 0 auto;
-    display: block;
-    font-size: 17px;
-    padding: 10px 0;
-    font-weight: 700;
-    cursor: pointer;
+.login-form > div + div {
+    margin-top: 1rem;
+}
+
+.login-form button,
+header > form button {
+    width: 100%;
+    margin-top: 1.3rem;
 }
 
 #forgot-password-div {
-    width: 85%;
-    max-width: 500px;
-    margin: 0 auto 50px auto;
-    text-align: right;
+    margin-top: 1rem;
 }
 
-#forgot-password-div a {
+#forgot-password-div a,
+.login-aside__links a {
+    color: var(--primary);
     text-decoration: underline;
-    color: var(--secondary-colour);
+    text-decoration-color: rgba(97, 83, 157, 0.35);
+}
+
+.login-aside {
+    background:
+        linear-gradient(150deg, rgba(252, 236, 210, 0.96), rgba(246, 230, 205, 0.9)),
+        rgba(252, 236, 210, 0.92);
+}
+
+.login-aside h2 {
+    margin-top: 0.85rem;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+}
+
+.login-aside p:last-of-type {
+    margin-top: 1rem;
+}
+
+.login-aside__links {
+    display: grid;
+    gap: 0.65rem;
+    margin-top: 1.2rem;
+}
+
+header > form {
+    width: min(100% - 2rem, 32rem);
+    margin: 1.5rem auto 3rem;
+    padding: clamp(1.5rem, 3vw, 2.3rem);
+    background: rgba(255, 255, 255, 0.76);
+    border-radius: 2rem;
+    box-shadow: var(--shadow-soft);
+}
+
+header > form small {
+    display: block;
+    margin-top: 0.55rem;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+    line-height: 1.55;
+}
+
+@media (min-width: 900px) {
+    .login-shell {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    }
 }

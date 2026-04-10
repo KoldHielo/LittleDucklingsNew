@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import Http404, HttpRequest
+from django.http import Http404, HttpRequest, HttpResponse
+from django.conf import settings
 from django.template import TemplateDoesNotExist
 import os
 from django.contrib.auth import authenticate, login, logout
@@ -25,6 +26,7 @@ from weasyprint import HTML
 base_context = {
     'trading_name': 'Little Ducklings Childminding',
     'price_gbp': 45,
+    'location_name': 'Baddeley Green, Stoke-on-Trent',
 }
 
 # Wrappers
@@ -33,7 +35,9 @@ def inject_context(view_func):
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
         kwargs['context'] = dict(base_context)
-        kwargs['context']['full_url'] = request.build_absolute_uri('/').rstrip('/')
+        kwargs['context']['site_url'] = request.build_absolute_uri('/').rstrip('/')
+        kwargs['context']['full_url'] = kwargs['context']['site_url']
+        kwargs['context']['canonical_url'] = request.build_absolute_uri(request.path)
         return view_func(request, *args, **kwargs)
     return wrapper
 
@@ -130,6 +134,15 @@ def child_record_pdf(record):
     return pdf_file
 
 # Create your views here.
+
+def robots_txt(request: HttpRequest):
+    content = render_to_string(
+        'robots.txt',
+        {
+            'sitemap_url': f'{settings.SITE_URL}{reverse("sitemap")}',
+        },
+    )
+    return HttpResponse(content, content_type='text/plain')
 
 @inject_context
 def home(request:HttpRequest, context=None):
@@ -633,4 +646,3 @@ def save_child_record_view(request, child_pk, context=None, guardian=None, child
         return redirect('child', child.pk)
 
     
-

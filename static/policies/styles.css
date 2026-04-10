@@ -1,41 +1,117 @@
-header {
-    margin-top: var(--nav-height);
-    padding: 0 10px;
+.policy-hero h1 {
+    max-width: 22ch;
 }
 
-header h1 {
-    max-width: 500px;
-}
-
-#policies {
+.policies-page {
+    width: var(--page-width);
     margin: 0 auto;
-    width: 80%;
-    max-width: 600px;
+    padding-bottom: 5rem;
 }
 
-#policies h2 {
+.policy-article {
+    padding: clamp(1.6rem, 3vw, 2.6rem);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 242, 222, 0.72)),
+        rgba(255, 255, 255, 0.76);
+    border-radius: 2.2rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.policy-article > section > :first-child {
+    margin-top: 0;
+}
+
+.policy-article > section > p:first-child {
+    font-size: 1.08rem;
+    color: var(--ink);
+}
+
+#policies h2,
+#policies h3,
+#policies h4 {
     text-align: left;
 }
 
+#policies h2 {
+    margin-top: 2.4rem;
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+}
+
 #policies h3 {
-    color: var(--home1);
-    margin: 10px 0 10px 0;
+    margin-top: 1.8rem;
+    color: var(--secondary);
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
 }
 
 #policies h4 {
-    color: var(--secondary-colour);
-    margin: 5px 0 7px 0;
+    margin-top: 1.2rem;
+    color: var(--tertiary);
+    font-size: 1rem;
+}
+
+#policies p,
+#policies ul,
+#policies blockquote {
+    max-width: 74ch;
 }
 
 #policies p {
-    padding: 7px 0;
+    margin-top: 0.95rem;
+    padding: 0;
+}
+
+#policies a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-color: rgba(97, 83, 157, 0.3);
 }
 
 #policies ul {
-    padding: 0 20px;
-    color: #419748;
+    margin-top: 1rem;
+    padding-left: 1.3rem;
+    color: var(--ink);
 }
 
 #policies ul li {
-    padding: 3px 4px;
+    padding: 0.28rem 0 0.28rem 0.2rem;
+    color: var(--ink-muted);
+    line-height: 1.68;
+}
+
+#policies ul li::marker {
+    color: var(--primary);
+}
+
+#policies ul ul {
+    margin-top: 0.55rem;
+    padding-left: 1.15rem;
+}
+
+#policies blockquote {
+    margin-top: 1.1rem;
+    padding: 1.2rem 1.3rem;
+    background:
+        linear-gradient(135deg, rgba(252, 236, 210, 0.96), rgba(203, 190, 255, 0.2)),
+        rgba(252, 236, 210, 0.88);
+    border-radius: 1.6rem;
+    box-shadow: var(--shadow-soft);
+}
+
+#policies blockquote p,
+#policies blockquote {
+    color: var(--ink);
+}
+
+#policies strong {
+    color: var(--ink);
+}
+
+@media (max-width: 640px) {
+    .policy-article {
+        border-radius: 1.7rem;
+    }
+
+    .policy-hero h1 {
+        max-width: none;
+    }
 }

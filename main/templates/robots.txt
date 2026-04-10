@@ -19,4 +19,4 @@ Disallow: /child_register/
 Disallow: /clock_in/
 Disallow: /clock_out/
 
-Sitemap: https://littleducklingschildminding.co.uk/sitemap.xml
+Sitemap: {{ sitemap_url }}

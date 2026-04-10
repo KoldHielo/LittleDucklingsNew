@@ -5,12 +5,20 @@ const d = document.querySelector('input[name="d"]');
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 
-email.addEventListener('change', () => {
-    b.value = 'spongealarm';
-    c.value = email.value;
+email?.addEventListener('change', () => {
+    if (b) {
+        b.value = 'spongealarm';
+    }
+    if (c) {
+        c.value = email.value;
+    }
 });
 
-password.addEventListener('change', () => {
-    d.value = 'chairshed';
-    a.value = password.value;
+password?.addEventListener('change', () => {
+    if (d) {
+        d.value = 'chairshed';
+    }
+    if (a) {
+        a.value = password.value;
+    }
 });
