@@ -17,6 +17,20 @@
     box-shadow: var(--shadow-soft);
 }
 
+.policy-control {
+    max-width: 74ch;
+    margin-bottom: 2rem;
+    padding: 1.15rem 1.3rem;
+    border-left: 0.35rem solid var(--primary);
+    border-radius: 0 1rem 1rem 0;
+    background: rgba(203, 190, 255, 0.18);
+}
+
+.policy-control p {
+    margin: 0.3rem 0;
+    font-size: 0.94rem;
+}
+
 .policy-article > section > :first-child {
     margin-top: 0;
 }
@@ -51,8 +65,29 @@
 
 #policies p,
 #policies ul,
-#policies blockquote {
+#policies blockquote,
+#policies table {
     max-width: 74ch;
+}
+
+#policies table {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+    font-size: 0.94rem;
+}
+
+#policies th,
+#policies td {
+    padding: 0.7rem;
+    border: 1px solid rgba(55, 50, 74, 0.18);
+    text-align: left;
+    vertical-align: top;
+}
+
+#policies th {
+    color: var(--ink);
+    background: rgba(203, 190, 255, 0.2);
 }
 
 #policies p {
@@ -113,5 +148,10 @@
 
     .policy-hero h1 {
         max-width: none;
+    }
+
+    #policies table {
+        display: block;
+        overflow-x: auto;
     }
 }

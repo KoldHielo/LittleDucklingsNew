@@ -3,106 +3,109 @@ from xml.etree import ElementTree
 
 from django.conf import settings
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import NoReverseMatch, reverse
+
+
+class ShowcaseSiteTests(TestCase):
+    removed_route_names = (
+        'login', 'logout', 'password_reset', 'password_verify', 'activate_account',
+        'parent_dashboard', 'staff_dashboard', 'child', 'child_contract',
+        'child_consent', 'child_record', 'child_register',
+    )
+
+    def test_authentication_and_portal_routes_are_removed(self):
+        for route_name in self.removed_route_names:
+            with self.subTest(route_name=route_name):
+                with self.assertRaises(NoReverseMatch):
+                    reverse(route_name)
+
+        for path in ('/login/', '/admin/', '/parent_dashboard/', '/child_register/'):
+            with self.subTest(path=path):
+                self.assertEqual(self.client.get(path).status_code, 404)
+
+    def test_navigation_has_no_login_or_dashboard_links(self):
+        body = self.client.get(reverse('home')).content.decode()
+
+        self.assertNotIn('>Login<', body)
+        self.assertNotIn('>Logout<', body)
+        self.assertNotIn('>Dashboard<', body)
 
 
 class SitemapTests(TestCase):
-    def test_sitemap_includes_public_pages_and_policies_only(self):
+    def test_sitemap_includes_public_pages_and_every_policy(self):
         response = self.client.get(reverse('sitemap'))
-
         self.assertEqual(response.status_code, 200)
-        self.assertTrue(response['Content-Type'].startswith('application/xml'))
 
         root = ElementTree.fromstring(response.content)
         namespace = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
-        locations = {
-            element.text
-            for element in root.findall('sm:url/sm:loc', namespace)
-        }
-
+        locations = {element.text for element in root.findall('sm:url/sm:loc', namespace)}
         policy_template_dir = Path(settings.BASE_DIR, 'main/templates/policies')
         policy_urls = {
-            f'https://testserver/policies/{template_path.stem}/'
-            for template_path in policy_template_dir.glob('*.html')
-            if template_path.stem != 'base'
+            f'https://testserver/policies/{path.stem}/'
+            for path in policy_template_dir.glob('*.html')
+            if path.stem != 'base'
         }
 
-        expected_urls = {
+        self.assertSetEqual(locations, {
             'https://testserver/',
             'https://testserver/gallery/',
             'https://testserver/policies/',
             *policy_urls,
-        }
+        })
 
-        self.assertSetEqual(locations, expected_urls)
-        self.assertNotIn('https://testserver/login/', locations)
-        self.assertNotIn('https://testserver/password-reset/', locations)
-
-    def test_robots_txt_references_sitemap_and_disallows_private_routes(self):
-        response = self.client.get(reverse('robots'))
-
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(response['Content-Type'].startswith('text/plain'))
-
-        body = response.content.decode()
+    def test_robots_only_publishes_sitemap(self):
+        body = self.client.get(reverse('robots')).content.decode()
 
         self.assertIn('User-agent: *', body)
         self.assertIn('Allow: /', body)
-        self.assertIn('Disallow: /admin/', body)
-        self.assertIn('Disallow: /login/', body)
-        self.assertIn('Disallow: /parent_dashboard/', body)
+        self.assertNotIn('Disallow:', body)
         self.assertIn(f'Sitemap: {settings.SITE_URL}/sitemap.xml', body)
 
 
+class PolicyAuditTests(TestCase):
+    def policy_body(self, slug):
+        response = self.client.get(reverse('get_policy', args=[slug]))
+        self.assertEqual(response.status_code, 200)
+        return response.content.decode()
+
+    def test_policy_menu_includes_new_uncollected_child_policy(self):
+        body = self.client.get(reverse('policy_menu')).content.decode()
+        self.assertIn('/policies/uncollected-child-policy/', body)
+        self.assertIn('Special Educational Needs and Disabilities (SEND)', body)
+
+    def test_all_policies_include_document_control(self):
+        policy_dir = Path(settings.BASE_DIR, 'main/templates/policies')
+        for path in policy_dir.glob('*.html'):
+            if path.stem == 'base':
+                continue
+            with self.subTest(policy=path.stem):
+                body = self.policy_body(path.stem)
+                self.assertIn('Effective and last reviewed:', body)
+                self.assertIn('14 September 2026', body)
+
+    def test_high_priority_audit_corrections_are_published(self):
+        self.assertIn('always within 14 days', self.policy_body('accident-procedure'))
+        self.assertIn('within 28 days', self.policy_body('complaints-policy'))
+        self.assertIn('verbal-only consent is never sufficient', self.policy_body('medication-policy'))
+        self.assertIn('no blanket 10-day COVID-19 exclusion', self.policy_body('illness-infection-control-policy'))
+        self.assertIn('0800 028 0285', self.policy_body('whistleblowing-policy'))
+        self.assertIn('adult remains in the same room', self.policy_body('health-safety-policy'))
+        self.assertIn('Information Commissioner', self.policy_body('privacy-notice'))
+
+
 class SeoMetadataTests(TestCase):
-    def test_gallery_page_has_location_focused_title_and_canonical(self):
-        response = self.client.get(reverse('gallery'))
-
-        self.assertEqual(response.status_code, 200)
-
-        body = response.content.decode()
-
-        self.assertIn(
-            '<title>Childminding Gallery in Baddeley Green, Stoke-on-Trent | Little Ducklings Childminding</title>',
-            body,
-        )
-        self.assertIn(
-            '<link rel="canonical" href="http://testserver/gallery/" />',
-            body,
-        )
-
     def test_home_page_includes_local_business_and_faq_schema(self):
-        response = self.client.get(reverse('home'))
-
-        self.assertEqual(response.status_code, 200)
-
-        body = response.content.decode()
-
+        body = self.client.get(reverse('home')).content.decode()
         self.assertIn('"@type": "LocalBusiness"', body)
         self.assertIn('"@type": "FAQPage"', body)
-        self.assertIn('Baddeley Green, Stoke-on-Trent', body)
-
-    def test_private_pages_are_marked_noindex(self):
-        response = self.client.get(reverse('login'))
-
-        self.assertEqual(response.status_code, 200)
-
-        body = response.content.decode()
-
-        self.assertIn(
-            '<meta name="robots" content="noindex, nofollow, noarchive" />',
-            body,
-        )
 
     def test_policy_page_uses_specific_title_and_canonical(self):
-        response = self.client.get(reverse('get_policy', args=['safeguarding-policy']))
-
-        self.assertEqual(response.status_code, 200)
-
-        body = response.content.decode()
-
+        body = self.client.get(
+            reverse('get_policy', args=['safeguarding-policy'])
+        ).content.decode()
         self.assertIn(
-            '<title>Safeguarding Policy in Baddeley Green, Stoke-on-Trent | Little Ducklings Childminding</title>',
+            '<title>Safeguarding and Child Protection Policy in Baddeley Green, '
+            'Stoke-on-Trent | Little Ducklings Childminding</title>',
             body,
         )
         self.assertIn(

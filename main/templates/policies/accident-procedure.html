@@ -1,29 +1,26 @@
 {% extends 'policies/base.html' %}
-
-{% block policy %}Accident Procedure{% endblock %}
-{% block policy2 %}Accident Procedure{% endblock %}
-{% block policy3 %}Accident Procedure{% endblock %}
-{% block policy4 %}Accident Procedure{% endblock %}
-
+{% block policy %}Accident Procedure{% endblock %}{% block policy2 %}Accident Procedure{% endblock %}{% block policy3 %}Accident Procedure{% endblock %}{% block policy4 %}Accident Procedure{% endblock %}
 {% block policy_contents %}
 <section id="accident-procedure">
-  <p>If the child has an accident, this procedure must be followed:</p>
+  <p>This procedure explains how I prevent, respond to, record and report accidents, injuries, serious illness and deaths. The child's safety and immediate care always come first.</p>
+  <h2>Immediate response</h2>
   <ul>
-    <li>Perform first aid which you have trained to do – make sure the first aid kit is accessible and with you during outings.</li>
-    <li>Ring 999/111 if it is a serious accident or you have concerns about a child.</li>
-    <li>Make every effort to contact the parents/guardians.</li>
-    <li>Complete an accident or injury form whenever possible (include witness statements if you can).</li>
-    <li>Ask parents/guardians to sign the accident or injury form and provide them with a photocopy.</li>
-    <li>Replace any first aid items used.</li>
-    <li>Consider whether any changes need to be made. Risk assess the situation to promote health and safety.</li>
-    <li>Place the accident or injury form in the child’s file and retain it securely until they are 21 years 3 months old.</li>
+    <li>I will make the area safe, assess the child and provide only first aid for which I am trained.</li>
+    <li>I will call 999 for a life-threatening emergency or serious injury, or NHS 111 when urgent clinical advice is appropriate. I will not delay treatment while trying to contact a parent.</li>
+    <li>I will keep other children safely supervised, follow any individual healthcare plan, and accompany the child to hospital where necessary until a parent or authorised adult takes over.</li>
+    <li>I will contact the parent or carer promptly.</li>
   </ul>
-  <p>If it is a serious accident or injury, you must:</p>
+  <h2>Recording and informing parents</h2>
+  <p>I will make a written record of every accident or injury and any first aid given. It will include the child, date, time, place, circumstances, injury, treatment, people present, and action or follow-up. Parents will be informed on the same day, or as soon as reasonably practicable, and asked to acknowledge the record. I will also record significant pre-existing injuries reported or seen on arrival.</p>
+  <h2>External notifications</h2>
   <ul>
-    <li>Report to Ofsted.</li>
-    <li>Report the incident to RIDDOR.</li>
-    <li>Find out whether it needs to be reported to the Local Safeguarding Board.</li>
-    <li>Report the accident to the insurance company in case action is taken against me by the child or the parents in the future.</li>
+    <li>I will notify Ofsted of a serious accident, serious injury, serious illness or death while a child is in my care, and the action taken, as soon as reasonably practicable and always within 14 days using the official <a href="https://www.gov.uk/guidance/report-a-serious-childcare-incident">serious childcare incident service</a>.</li>
+    <li>I will notify Stoke-on-Trent Children's Social Care and follow its advice where the incident raises safeguarding concerns or involves serious injury or death. Immediate danger is reported to 999.</li>
+    <li>I will report food poisoning affecting two or more children to Ofsted within the same 14-day limit and contact the local Health Protection Team where UKHSA guidance requires it.</li>
+    <li>I will make a RIDDOR report only when the event meets the criteria in the Reporting of Injuries, Diseases and Dangerous Occurrences Regulations 2013, taking advice from the <a href="https://www.hse.gov.uk/riddor/">Health and Safety Executive</a> where needed.</li>
+    <li>I will notify my insurer and any other relevant body where the policy, contract or law requires it.</li>
   </ul>
+  <h2>Review and retention</h2>
+  <p>I will replenish first-aid supplies, review the risk assessment and supervision arrangements, and record actions taken. Records are stored securely and retained according to the <a href="{% url 'get_policy' 'gdpr-retention-policy' %}">UK GDPR and Data Protection/Retention Policy</a>. Any long retention period is based on documented insurance and limitation-risk advice, not described as an EYFS or UK GDPR requirement.</p>
 </section>
 {% endblock %}

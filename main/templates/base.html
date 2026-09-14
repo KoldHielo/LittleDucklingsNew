@@ -69,17 +69,6 @@
                         <li><a href="{% url 'home' %}">Home</a></li>
                         <li><a href="{% url 'gallery' %}">Gallery</a></li>
                         <li><a href="{% url 'policy_menu' %}">Policies</a></li>
-                        {% if user.is_authenticated %}
-                            {% if user.is_staff %}
-                            <li><a href="{% url 'staff_dashboard' %}">Dashboard</a></li>
-                            <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                            {% else %}
-                            <li><a href="{% url 'parent_dashboard' %}">Dashboard</a></li>
-                            {% endif %}
-                        <li><a href="{% url 'logout' %}">Logout</a></li>
-                        {% else %}
-                        <li><a href="{% url 'login' %}">Login</a></li>
-                        {% endif %}
                         <li class="menu-cta-item">
                             <a class="button button-primary" href="{% url 'home' %}#contact">Book a Visit</a>
                         </li>
@@ -166,12 +155,5 @@
         {% block scripts %}
         {% endblock %}
 
-        {% if messages %}
-        <script>
-            {% for message in messages %}
-            alert('{{ message|safe }}')
-            {% endfor %}
-        </script>
-        {% endif %}
     </body>
 </html>

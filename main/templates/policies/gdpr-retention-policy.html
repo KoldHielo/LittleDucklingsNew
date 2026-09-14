@@ -1,33 +1,29 @@
 {% extends 'policies/base.html' %}
-
-{% block policy %}General Data Protection Regulations (GDPR) and Retention Policy{% endblock %}
-{% block policy2 %}General Data Protection Regulations (GDPR) and Retention Policy{% endblock %}
-{% block policy3 %}General Data Protection Regulations (GDPR) and Retention Policy{% endblock %}
-{% block policy4 %}General Data Protection Regulations (GDPR) and Retention Policy{% endblock %}
-
+{% block policy %}UK GDPR and Data Protection/Retention Policy{% endblock %}{% block policy2 %}UK GDPR and Data Protection/Retention Policy{% endblock %}{% block policy3 %}UK GDPR and Data Protection/Retention Policy{% endblock %}{% block policy4 %}UK GDPR and Data Protection/Retention Policy{% endblock %}
 {% block policy_contents %}
 <section id="gdpr-retention-policy">
-  <p>Under the General Data Protection Regulations (GDPR), personal data processing is improved and strengthened. All Early Years and Childcare settings must follow guidance when processing personal data from parents about their child and family. Parents have the right to request deletion of personal data once they leave the setting, provided that deleting the material does not impact Ofsted or other legal regulations. Please refer to my data audit for retention dates of each document.</p>
-
-  <h3>Data Required</h3>
-  <p>The data I require to ensure compliance with GDPR and Ofsted requirements includes:</p>
-  <ul>
-    <li>Personal Information</li>
-    <li>Parents’ names</li>
-    <li>Child’s name</li>
-    <li>Date of Birth</li>
-    <li>Address/Addresses</li>
-    <li>Contact Details</li>
-    <li>Doctors and Health Visitors’ Names</li>
-    <li>Parental Responsibility</li>
-    <li>Medical Information</li>
-    <li>Early Years Foundation Stage documents</li>
-  </ul>
-
-  <h3>Data Storage and Security</h3>
-  <p>All information is paper-based and stored securely in a locked file within a secure cupboard, inaccessible to unauthorized persons. Information cannot be shared without parental permission unless it is a safeguarding concern.</p>
-
-  <h3>Access and Retention</h3>
-  <p>Parents may access any personal data held on their child or family. Data will be held securely until such time as deletion is requested, provided this does not compromise Ofsted, the Department for Education, the Local Authority, or HMRC. Data relating to safeguarding or accidents must be retained until the child reaches the age of 21 years and 3 months, as required by law.</p>
+  <p>I process personal data in accordance with the UK GDPR and Data Protection Act 2018, as amended. I keep a data inventory, processor register and retention log, and apply lawfulness, fairness, transparency, purpose limitation, data minimisation, accuracy, storage limitation, security and accountability.</p>
+  <h2>Information and lawful use</h2>
+  <p>Records may include identity and contact details; contracts, fees and attendance; health, allergy, dietary, SEND and care information; learning records and images; accidents, medication and complaints; safeguarding information; website enquiries; and video-doorbell footage. Depending on the purpose, the lawful basis is contract, legal obligation, vital interests, legitimate interests, public task where applicable, or consent. Health, SEND and other special-category data also requires an Article 9 condition, commonly health/social care, substantial public interest safeguarding, legal claims, or explicit consent where genuinely optional.</p>
+  <p>Information may be shared without consent where another lawful basis permits or requires it, including safeguarding, emergency care, regulation, funding, tax, insurance or legal claims. Only necessary information is shared.</p>
+  <h2>Security, systems and processors</h2>
+  <p>Paper records are locked; electronic records are protected by device security, strong unique passwords, access controls, updates and appropriate backup. Current systems include the public website contact form and hosting, business email, local secured devices/backups, and the video-doorbell cloud service. There is no parent login or online child-record portal. Processor contracts, locations and international-transfer safeguards are recorded and reviewed. Access is limited to authorised people with confidentiality duties.</p>
+  <h2>Retention schedule</h2>
+  <table>
+    <thead><tr><th>Record</th><th>Normal retention</th><th>Reason</th></tr></thead>
+    <tbody>
+      <tr><td>Unsuccessful website enquiries</td><td>12 months after last contact</td><td>Follow-up and dispute handling</td></tr>
+      <tr><td>Contracts, invoices and tax records</td><td>At least 5 years after the relevant 31 January tax deadline; contractual records may be held 6 years after the relationship ends</td><td>HMRC and legal claims</td></tr>
+      <tr><td>EYFS learning/development records</td><td>Transferred at transition where appropriate; setting copy deleted when no longer needed, normally within 3 years</td><td>Continuity and complaint evidence</td></tr>
+      <tr><td>Attendance, child details, permissions and routine care records</td><td>3 years after the child leaves unless a longer funding, insurance or legal period is documented</td><td>EYFS/Childcare Register, funding and complaints</td></tr>
+      <tr><td>Complaints</td><td>3 years after the record is made, or longer while a connected process continues</td><td>Regulatory evidence</td></tr>
+      <tr><td>Accident, injury, medication and safeguarding records</td><td>For the documented insurer/limitation period, currently to the child's 21st birthday plus 3 months where insurer advice requires it; longer if an active case or law requires</td><td>Safeguarding, regulation and legal claims; this is not described as a UK GDPR rule</td></tr>
+      <tr><td>Video-doorbell footage</td><td>Up to 30 days unless isolated for an incident</td><td>Security and incident evidence</td></tr>
+    </tbody>
+  </table>
+  <p>Periods are reviewed against current insurer terms, funding agreements and law. A legal hold pauses deletion. At expiry, paper is cross-cut shredded and electronic copies securely deleted, including recoverable copies where practicable.</p>
+  <h2>Rights, breaches and review</h2>
+  <p>People may request access, rectification, erasure, restriction, portability where applicable, or object, and may withdraw consent without affecting earlier lawful processing. Rights are not absolute where law, safeguarding, another person's rights or legal claims require retention or restricted disclosure. Requests and data complaints should be sent to <a href="mailto:info@littleducklingschildminding.co.uk">info@littleducklingschildminding.co.uk</a>.</p>
+  <p>I document and contain personal-data breaches, assess risk, and notify the ICO without undue delay and, where required, within 72 hours; affected people are told where high risk requires it. Data and retention are reviewed at least annually and when systems or practice change. See the <a href="{% url 'get_policy' 'privacy-notice' %}">Privacy Notice</a> for full transparency information.</p>
 </section>
 {% endblock %}
