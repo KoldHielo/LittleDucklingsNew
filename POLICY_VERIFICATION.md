@@ -1,14 +1,25 @@
 # Policy implementation checks
 
-The website policies were rewritten on 14 September 2026 following the supplied audit. Before publication, Laura should confirm that the operational statements below match actual practice and retain evidence where indicated.
+The website policies were revised on 15 September 2026 following the supplied audit and Laura's practical corrections. The points Laura has confirmed are recorded first; the remaining checks should be completed and kept under review.
 
-- Registration is directly with Ofsted, not through a childminder agency.
+## Confirmed details
+
+- Laura Oldfield is registered directly with Ofsted. Little Ducklings Childminding is her trading name.
+- All childcare records are stored electronically in ChildLogs, which also provides the parent portal. There are no separate paper childcare records.
+- The public Little Ducklings website is a showcase site and does not provide the parent portal.
+- The doorbell records both audio and video. Recordings are stored locally on its internal micro SD card, not in cloud storage.
+- There is not currently a separate CCTV/video-doorbell sign.
+
+## Checks to complete or keep under review
+
 - Any assistant, volunteer, student or apprentice arrangements match the safeguarding and whistleblowing procedures.
 - Local-authority-funded provision and its attendance/SEND record requirements are correctly reflected.
-- The data inventory and processor register name the actual website host, email provider, device/backup services, doorbell provider, accounting tools and any childcare or messaging apps.
-- International data locations and transfer safeguards for each technology supplier have been checked.
+- The data inventory and processor register name ChildLogs, the website host, business email provider and any other service used. Keep a copy of the current ChildLogs data-processing terms.
+- ChildLogs' subprocessors, international data locations and transfer safeguards are reviewed when its terms change.
 - The insurer has confirmed relevant record-retention periods in writing. The published schedule currently describes 21 years and 3 months as an insurer/limitation-risk period, not a general statutory rule.
-- The doorbell is configured without audio, its view is limited to the entrance, routine footage is overwritten within 30 days, appropriate signage is installed, and the legitimate-interests assessment is documented.
+- Record how much footage the doorbell's micro SD card normally holds before old clips are overwritten.
+- Complete and retain a legitimate-interests assessment covering the doorbell's video and audio. Consider adding clear signage before visitors enter its recording area, as recommended by the ICO.
+- Check that access to the doorbell footage and physical access to the micro SD card are properly secured.
 - No prohibited dog breed, including an exempt XL Bully, is kept or present on the childcare premises.
 - Safer-sleep equipment and practice meet the 1 September 2026 EYFS requirements, particularly same-room supervision for every sleep under six months.
 - The named assembly point, alternative exit, evacuation aid and temporary safe location are recorded in the non-public premises plan.

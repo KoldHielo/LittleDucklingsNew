@@ -81,16 +81,29 @@ class PolicyAuditTests(TestCase):
             with self.subTest(policy=path.stem):
                 body = self.policy_body(path.stem)
                 self.assertIn('Effective and last reviewed:', body)
-                self.assertIn('14 September 2026', body)
+                self.assertIn('15 September 2026', body)
 
     def test_high_priority_audit_corrections_are_published(self):
         self.assertIn('always within 14 days', self.policy_body('accident-procedure'))
         self.assertIn('within 28 days', self.policy_body('complaints-policy'))
-        self.assertIn('verbal-only consent is never sufficient', self.policy_body('medication-policy'))
+        self.assertIn('verbal permission on its own is not enough', self.policy_body('medication-policy'))
         self.assertIn('no blanket 10-day COVID-19 exclusion', self.policy_body('illness-infection-control-policy'))
         self.assertIn('0800 028 0285', self.policy_body('whistleblowing-policy'))
         self.assertIn('adult remains in the same room', self.policy_body('health-safety-policy'))
         self.assertIn('Information Commissioner', self.policy_body('privacy-notice'))
+
+    def test_confirmed_operational_details_are_consistent(self):
+        accident = self.policy_body('accident-procedure')
+        attendance = self.policy_body('attendance-record')
+        doorbell = self.policy_body('doorbell-video-policy')
+        privacy = self.policy_body('privacy-notice')
+
+        self.assertIn('ChildLogs', accident)
+        self.assertIn('ChildLogs', attendance)
+        self.assertIn('video and audio', doorbell)
+        self.assertIn('micro SD card', doorbell)
+        self.assertIn('not stored in a cloud service', doorbell)
+        self.assertIn('secure parent portal', privacy)
 
 
 class SeoMetadataTests(TestCase):
